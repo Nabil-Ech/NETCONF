@@ -1,7 +1,6 @@
 from ncclient import manager
 import xmltodict
 import xml.dom.minidom
-import mailbox
 
 # Create an XML filter for targeted NETCONF queries
 netconf_filter = """
@@ -18,7 +17,7 @@ print("Opening NETCONF Connection to {}"
 with manager.connect(
         host="192.168.1.1",
         port=830,
-        username="admin",
+        username="admin", 
         password="nabil",
         hostkey_verify=False
         ) as m:
