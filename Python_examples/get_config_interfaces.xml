@@ -1,0 +1,52 @@
+  Opening NETCONF Connection to host: ATN-IPS-R-192.168.1.1
+Sending a <get-config> operation to the device.
+
+Here is the raw XML data returned from the device.
+
+<?xml version="1.0" ?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:eb0536f6-a2f3-457c-aa5b-f3ca9d69ece3">
+        <data>
+                <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+                        <interface>
+                                <name>GigabitEthernet1</name>
+                                <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                                <enabled>true</enabled>
+                                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+                                        <address>
+                                                <ip>192.168.1.1</ip>
+                                                <netmask>255.255.255.0</netmask>
+                                        </address>
+                                </ipv4>
+                                <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
+                        </interface>
+                        <interface>
+                                <name>GigabitEthernet2</name>
+                                <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                                <enabled>false</enabled>
+                                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
+                                <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
+                        </interface>
+                        <interface>
+                                <name>GigabitEthernet3</name>
+                                <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                                <enabled>false</enabled>
+                                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
+                                <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
+                        </interface>
+                        <interface>
+                                <name>GigabitEthernet4</name>
+                                <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                                <enabled>false</enabled>
+                                <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
+                                <ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
+                        </interface>
+                </interfaces>
+        </data>
+</rpc-reply>
+
+
+The interface status of the device is: 
+Interface GigabitEthernet1 enabled status is true
+Interface GigabitEthernet2 enabled status is false
+Interface GigabitEthernet3 enabled status is false
+Interface GigabitEthernet4 enabled status is false
