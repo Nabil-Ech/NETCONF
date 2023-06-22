@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:845b9a86-517e-49a2-8aaf-3511f5745e03">
+   <data>
+      <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+         <ip>
+            <dhcp>
+               <pool xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-dhcp">
+                  <id>MyPool</id>
+                  <default-router>
+                     <default-router-list>192.168.1.1</default-router-list>
+                  </default-router>
+                  <network>
+                     <primary-network>
+                        <number>192.168.1.0</number>
+                        <mask>255.255.255.0</mask>
+                     </primary-network>
+                  </network>
+               </pool>
+            </dhcp>
+         </ip>
+      </native>
+   </data>
+</rpc-reply>

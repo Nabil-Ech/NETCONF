@@ -1,25 +1,27 @@
 from ncclient import manager
 
-# Define the device information
 device = {
-    "host": "192.168.1.1",       # Replace with the IP address or hostname of your device
-    "port": 830,             # NETCONF port (default is 830)
-    "username": "admin",  # Replace with your device's username
-    "password": "nabil",  # Replace with your device's password
+    "host": "192.168.1.30",   # Replace with the IP address or hostname of your device
+    "port": 830,               # NETCONF port (default is 830)
+    "username": "admin",       # Replace with your device's username
+    "password": "nabil",       # Replace with your device's password
 }
 
-# Define the new hostname
-new_hostname = "Cisco_1000v"
+old_pool_name = "pool1"
 
-# Define the NETCONF configuration payload to change the hostname
 config_xml = f"""
 <config>
     <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
-        <hostname>{new_hostname}</hostname>
+        <ip>
+            <dhcp>
+                <pool xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-dhcp" nc:operation="delete" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+                    <id>{old_pool_name}</id>
+                </pool>
+            </dhcp>
+        </ip>
     </native>
 </config>
 """
-
 # Connect to the device and lock the candidate configuration datastore
 with manager.connect(**device, hostkey_verify=False) as m:
     # Lock the candidate datastore
@@ -36,5 +38,3 @@ with manager.connect(**device, hostkey_verify=False) as m:
 
     # Unlock the candidate datastore
     m.unlock('candidate')
-
-    print("Hostname changed successfully.")

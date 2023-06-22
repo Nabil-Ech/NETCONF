@@ -3,7 +3,7 @@ import xmltodict
 import xml.dom.minidom
 
 with manager.connect(
-        host="192.168.1.1",
+        host="192.168.1.10",
         port=830,
         username="admin",
         password="nabil",

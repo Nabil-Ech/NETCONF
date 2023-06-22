@@ -2,32 +2,21 @@ from ncclient import manager
 
 # Define the device information
 device = {
-    "host": "192.168.1.1",       # Replace with the IP address or hostname of your device
+    "host": "192.168.1.10",       # Replace with the IP address or hostname of your device
     "port": 830,             # NETCONF port (default is 830)
     "username": "admin",  # Replace with your device's username
     "password": "nabil",  # Replace with your device's password
 }
 
-# Define the new interface
+# Define the new hostname
+new_hostname = "Server1"
 
-index = "GigabitEthernet3"
-ip_address= "192.168.3.1"
-mask = "255.255.255.0"
-
-# Define the NETCONF configuration payload to change the interface
+# Define the NETCONF configuration payload to change the hostname
 config_xml = f"""
 <config>
-    <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-        <interface>
-            <name>{index}</name>
-            <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
-                <address>
-                    <ip>{ip_address}</ip>
-                    <netmask>{mask}</netmask>
-                </address>
-            </ipv4>
-        </interface>
-    </interfaces>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+        <hostname>{new_hostname}</hostname>
+    </native>
 </config>
 """
 
@@ -48,4 +37,4 @@ with manager.connect(**device, hostkey_verify=False) as m:
     # Unlock the candidate datastore
     m.unlock('candidate')
 
-    print("Interface changed successfully.")
+    print("Hostname changed successfully.")
