@@ -19,6 +19,6 @@ write_values_to_file(old_pool_name,'old_pool.txt')
 
 
 # Read the values from the file
-"""read_values = read_values_from_file('old_ip.txt')
+read_values = read_values_from_file('old_ip.txt')
 for i in range (3):
-    print(read_values[i])  # Print the read values from the file"""
+    print(read_values[i])  # Print the read values from the file
