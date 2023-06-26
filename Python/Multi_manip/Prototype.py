@@ -5,13 +5,14 @@ def generate_subnets(network, num_ips_list):
     subnets = []
     print(sorted_ips_list)
 
-"""    for num_ips in sorted_ips_list:
+    for num_ips in sorted_ips_list:
+        for x in range(32-ipaddress.IPv4Network(network.netmask).prefixlen)
         subnet_prefix = network.prefixlen + (num_ips - 1).bit_length()
         subnet = ipaddress.IPv4Network((network.network_address, subnet_prefix))
         subnets.append(subnet)
         network = ipaddress.IPv4Network((subnet.network_address + subnet.num_addresses, network.prefixlen))
     
-    return subnets"""
+    return subnets
 
 def generate_dhcp_server(network, subnet):
     dhcp_network = subnet.network_address
@@ -21,19 +22,22 @@ def generate_dhcp_server(network, subnet):
 
 
 
-
-network = ipaddress.IPv4Network("10.10.0.0/24")
-"""print("Network address:", network.network_address)
-print("Subnet mask:", network.netmask)"""
-
 num_ips_router1 = 50
 num_ips_router2 = 100
 num_ips_router3 = 49
 
+network = ipaddress.IPv4Network("10.10.0.0/24")
+print("Network address:", network.network_address)
+print("Subnet mask:", network.netmask)
+print( num_ips_router2.bit_length() )
+
+
 
 num_ips_list=[num_ips_router1, num_ips_router2, num_ips_router3]
-
-
+subnet_prefix = network.prefixlen + (num_ips_router1 - 1).bit_length()
+subnet = ipaddress.IPv4Network((network.network_address, subnet_prefix))
+print(subnet_prefix)
+print(subnet)
 burgir=generate_subnets(network, num_ips_list)
 
 
