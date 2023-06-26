@@ -5,14 +5,14 @@ def generate_subnets(network, num_ips_list):
     subnets = []
     print(sorted_ips_list)
 
-    for num_ips in sorted_ips_list:
+"""   for num_ips in sorted_ips_list:
         for x in range(32-ipaddress.IPv4Network(network.netmask).prefixlen)
         subnet_prefix = network.prefixlen + (num_ips - 1).bit_length()
         subnet = ipaddress.IPv4Network((network.network_address, subnet_prefix))
         subnets.append(subnet)
         network = ipaddress.IPv4Network((subnet.network_address + subnet.num_addresses, network.prefixlen))
     
-    return subnets
+    return subnets"""
 
 def generate_dhcp_server(network, subnet):
     dhcp_network = subnet.network_address
@@ -38,6 +38,8 @@ subnet_prefix = network.prefixlen + (num_ips_router1 - 1).bit_length()
 subnet = ipaddress.IPv4Network((network.network_address, subnet_prefix))
 print(subnet_prefix)
 print(subnet)
+print(32-ipaddress.IPv4Network(network.netmask).prefixlen)
+print("burgir", ipaddress.IPv4Network(network.netmask))
 burgir=generate_subnets(network, num_ips_list)
 
 
