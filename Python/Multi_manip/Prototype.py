@@ -1,13 +1,20 @@
 import ipaddress
-
+network = ipaddress.IPv4Network("10.10.0.0/24")
 def generate_subnets(network, num_ips_list):
-    sorted_ips_list = sorted(num_ips_list, reverse=True)
+    sorted_ips_list = sorted(num_ips_list, reverse=True) # sorting the list if ip_num
     subnets = []
-    print(sorted_ips_list)
+    power = 0
+    for num_ips in sorted_ips_list:
+        for x in range(32-ipaddress.IPv4Network("192.168.0.0/" + str(network.netmask)).prefixlen-1):
+            if (pow(2, x)<= num_ips and num_ips < pow(2, x+1)):
+                power = x+1
+        print(num_ips, power, pow(2, power))
 
-"""   for num_ips in sorted_ips_list:
-        for x in range(32-ipaddress.IPv4Network(network.netmask).prefixlen)
-        subnet_prefix = network.prefixlen + (num_ips - 1).bit_length()
+
+
+
+
+"""        subnet_prefix = network.prefixlen + (num_ips - 1).bit_length()
         subnet = ipaddress.IPv4Network((network.network_address, subnet_prefix))
         subnets.append(subnet)
         network = ipaddress.IPv4Network((subnet.network_address + subnet.num_addresses, network.prefixlen))
@@ -20,18 +27,18 @@ def generate_dhcp_server(network, subnet):
     return dhcp_network, dhcp_router
 
 
-
-
 num_ips_router1 = 50
 num_ips_router2 = 100
 num_ips_router3 = 49
 
+
 network = ipaddress.IPv4Network("10.10.0.0/24")
+print(network)
 print("Network address:", network.network_address)
 print("Subnet mask:", network.netmask)
 print( num_ips_router2.bit_length() )
 
-
+subnet_mask_ip = "255.255.255.0"
 
 num_ips_list=[num_ips_router1, num_ips_router2, num_ips_router3]
 subnet_prefix = network.prefixlen + (num_ips_router1 - 1).bit_length()
@@ -39,11 +46,11 @@ subnet = ipaddress.IPv4Network((network.network_address, subnet_prefix))
 print(subnet_prefix)
 print(subnet)
 print(32-ipaddress.IPv4Network(network.netmask).prefixlen)
-print("burgir", ipaddress.IPv4Network(network.netmask))
+
 burgir=generate_subnets(network, num_ips_list)
+network = ipaddress.IPv4Network("10.10.0.0/24")
 
-
-
+print("burgir", ipaddress.IPv4Network("192.168.0.0/" + str(network.netmask)).prefixlen)
 
 """def main():
     network = ipaddress.IPv4Network("10.10.0.0/24")
