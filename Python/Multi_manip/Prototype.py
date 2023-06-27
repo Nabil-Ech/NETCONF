@@ -9,12 +9,12 @@ def generate_subnets(network, num_ips_list):
             if (pow(2, x)<= num_ips and num_ips < pow(2, x+1)):
                 power = x+1
         print(num_ips, power, pow(2, power))
+        subnet_prefix = network.prefixlen + (num_ips_router1 - 1).bit_length()
 
 
 
 
-
-"""        subnet_prefix = network.prefixlen + (num_ips - 1).bit_length()
+"""     subnet_prefix = network.prefixlen + (num_ips - 1).bit_length()
         subnet = ipaddress.IPv4Network((network.network_address, subnet_prefix))
         subnets.append(subnet)
         network = ipaddress.IPv4Network((subnet.network_address + subnet.num_addresses, network.prefixlen))
@@ -43,7 +43,7 @@ subnet_mask_ip = "255.255.255.0"
 num_ips_list=[num_ips_router1, num_ips_router2, num_ips_router3]
 subnet_prefix = network.prefixlen + (num_ips_router1 - 1).bit_length()
 subnet = ipaddress.IPv4Network((network.network_address, subnet_prefix))
-print(subnet_prefix)
+print("mio", network.prefixlen)
 print(subnet)
 print(32-ipaddress.IPv4Network(network.netmask).prefixlen)
 
