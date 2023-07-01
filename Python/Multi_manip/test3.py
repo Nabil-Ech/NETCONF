@@ -1,50 +1,48 @@
-import ipaddress
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.children = []
 
-def allocate_subnets(network, num_ips_list):
-    sorted_ips_list = sorted(num_ips_list, reverse=True)
-    subnets = []
-    dhcp_networks = []
-    default_routers = []
-    dhcp_servers = []
+    def add_child(self, child):
+        self.children.append(child)
 
-    for num_ips in sorted_ips_list:
-        subnet_prefix = network.prefixlen
-        while 2 ** (32 - subnet_prefix) < num_ips:
-            subnet_prefix += 1
-        
-        subnet = ipaddress.IPv4Network((network.network_address, subnet_prefix))
-        subnets.append(subnet)
+    def remove_child(self, child):
+        self.children.remove(child)
 
-        dhcp_networks.append(str(subnet.network_address) + '/' + str(subnet_prefix))
-        default_routers.append(str(subnet.network_address + 1))
-        dhcp_servers.append(str(subnet.network_address + 2))
+    def __str__(self, level=0):
+        result = "  " * level + f"Node: {self.data}\n"
+        for child in self.children:
+            result += child.__str__(level + 1)
+        return result
 
-        network = ipaddress.IPv4Network((subnet.network_address + subnet.num_addresses, network.prefixlen))
 
-    return subnets, dhcp_networks, default_routers, dhcp_servers
+# Create the root node
+root = TreeNode("Root")
 
-def main():
-    network = ipaddress.IPv4Network("10.10.0.0/24")
-    num_ips_router1 = 100
-    num_ips_router2 = 50
-    num_ips_router3 = 50
+# Add branches to the root node
+branch1 = TreeNode("Branch 1")
+branch2 = TreeNode("Branch 2")
+branch3 = TreeNode("Branch 3")
 
-    subnets, dhcp_networks, default_routers, dhcp_servers = allocate_subnets(network, [num_ips_router1, num_ips_router2, num_ips_router3])
+root.add_child(branch1)
+root.add_child(branch2)
+root.add_child(branch3)
 
-    print("Router 1 - Subnet:", subnets[0])
-    print("        - DHCP Network:", dhcp_networks[0])
-    print("        - Default Router:", default_routers[0])
-    print("        - DHCP Server:", dhcp_servers[0])
+# Add sub-branches to Branch 1
+subbranch1 = TreeNode("Sub-branch 1")
+subbranch2 = TreeNode("Sub-branch 2")
 
-    print("Router 2 - Subnet:", subnets[1])
-    print("        - DHCP Network:", dhcp_networks[1])
-    print("        - Default Router:", default_routers[1])
-    print("        - DHCP Server:", dhcp_servers[1])
+branch1.add_child(subbranch1)
+branch1.add_child(subbranch2)
 
-    print("Router 3 - Subnet:", subnets[2])
-    print("        - DHCP Network:", dhcp_networks[2])
-    print("        - Default Router:", default_routers[2])
-    print("        - DHCP Server:", dhcp_servers[2])
+# Add sub-branches to Branch 2
+subbranch3 = TreeNode("Sub-branch 3")
 
-if __name__ == '__main__':
-    main()
+branch2.add_child(subbranch3)
+
+# Remove Branch 1 from the root node
+root.remove_child(branch1)
+
+# Print the tree structure
+print("Tree structure:")
+print(root)

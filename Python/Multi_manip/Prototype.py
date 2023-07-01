@@ -45,6 +45,7 @@ def generate_subnets(network, num_ips_list):
                 mask.append(subnet.netmask)
                 mask_dec.append(subnet_prefix)
                 default_router.append(new_subnet + 1)
+
         elif (32-ipaddress.IPv4Network("192.168.0.0/" + str(network.netmask)).prefixlen-1>power_list[0] and power_list[0]==power_list[1] and power_list[1]>power_list[2]):
             L=[0,pow(2, power_list[1]),0]
             for i in range (3):
@@ -55,6 +56,7 @@ def generate_subnets(network, num_ips_list):
                 mask.append(subnet.netmask)
                 mask_dec.append(subnet_prefix)
                 default_router.append(new_subnet + 1)    
+                
         elif (32-ipaddress.IPv4Network("192.168.0.0/" + str(network.netmask)).prefixlen-1>power_list[0] and power_list[0]==power_list[1] and power_list[1]==power_list[2]):
             L=[0,pow(2, power_list[1]),2*pow(2, power_list[1])]
             for i in range (3):
