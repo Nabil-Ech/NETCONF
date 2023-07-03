@@ -24,26 +24,78 @@ class TreeNode:
             self.add_child(subnet)
             subnet.create_subnets(mask + 1)
 
-    """def delete_subnet(self, mask):
-        if self.prefix == f"/{mask}":
-            return None
-        for i, child in enumerate(self.children):
-            if child.prefix == f"/{mask}":
-                self.remove_child(child)
-                return self
-            result = child.delete_subnet(mask)
-            if result is None:
-                self.remove_child(child)
-                break
-        return self"""
     def delete_subnet(self, mask):
         if self.prefix == f"/{mask}":
-            return None
+                self.parent.remove_child(self)
+                return self
+
+        for child in self.children:
+                deleted_node = child.delete_subnet(mask)
+                if deleted_node:
+                    return deleted_node
+            
+        return None
+
+    """def delete_subnet(self, mask):
+        if self.prefix == f"/{mask}":
+            #self.remove_child(self.prefix)
+            self.create_subnets(self.prefix)
+            
         self.children = [child for child in self.children if child.prefix != f"/{mask}"]
         for child in self.children:
             child.delete_subnet(mask)
+            break
             
-        return self
+        return self"""
+    
+
+    """    def find_node_path(self, mask, path=None):
+        if path is None:
+            path = []
+
+        if self.prefix == f"/{mask}":
+            return path + [self.prefix]
+
+        for child in self.children:
+            child_path = child.find_node_path(mask, path + [self.prefix])
+            if child_path:
+                return child_path
+
+        return None
+    
+    def delete_node(self, mask):
+        path = self.find_node_path(mask)
+        if path:
+            current_node = self
+            for prefix in path[:-1]:
+                for child in current_node.children:
+                    if child.prefix == prefix:
+                        current_node = child
+                        break
+            for child in current_node.children:
+                if child.prefix == path[-1]:
+                    current_node.remove_child(child)
+                    break"""
+    """def delete_subnet(self, mask):
+        path = []
+        current_node = self
+        while current_node:
+            path.append(current_node.prefix)
+            if current_node.prefix == f"/{mask}":
+                break
+            current_node = next((child for child in current_node.children if child.prefix == f"/{mask}"), None)
+        
+        if current_node and current_node == self:
+            return None
+
+        if current_node:
+            parent = current_node.parent
+            if parent:
+                parent.remove_child(current_node)
+        
+        return self"""
+
+
 
 
     def __str__(self, level=0):
@@ -68,7 +120,7 @@ try:
         print("Invalid input. The mask to delete must be greater than the original mask.")
     else:
         subnet_tree.delete_subnet(the_mask)
-
+        
     print("Updated subnet tree:")
     print(subnet_tree)
 

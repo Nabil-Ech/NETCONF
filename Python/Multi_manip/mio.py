@@ -20,28 +20,6 @@ class TreeNode:
 
         return None
 
-    def delete_brache(self, path):
-        if len(path) == 0:
-            return
-
-        parent_node = self
-        for node_name in path[:-1]:
-            found_child = None
-            for child in parent_node.children:
-                if child.data == node_name:
-                    found_child = child
-                    break
-            if found_child:
-                parent_node = found_child
-            else:
-                return
-
-        last_node_name = path[-1]
-        for child in parent_node.children:
-            if child.data == last_node_name:
-                parent_node.remove_child(child)
-                return
-
     def access_branch_by_path(self, path):
         current_node = self
         for node_name in path:
@@ -55,6 +33,21 @@ class TreeNode:
             else:
                 return None
         return current_node
+
+    def delete_branch_by_path(self, path):
+        if len(path) == 0:
+            return False
+
+        node_name = path[0]
+        for child in self.children:
+            if child.data == node_name:
+                if len(path) == 1:
+                    self.remove_child(child)
+                    return True
+                else:
+                    return child.delete_branch_by_path(path[1:])
+        
+        return False
 
     def __str__(self, level=0):
         result = "  " * level + f"Node: {self.data}\n"
@@ -104,15 +97,12 @@ path_to_mio = root.find_path_to_branch("mio")
 print("Path to mio branch:", path_to_mio)
 
 # Delete the mio branch using the obtained path
-root.delete_brache(path_to_mio)
+deleted = root.delete_branch_by_path(path_to_mio)
+if deleted:
+    print("mio branch deleted.")
+else:
+    print("mio branch not found or cannot be deleted.")
 
 # Print the updated tree structure
 print("\nUpdated tree structure:")
 print(root)
-
-# Access the mio branch using the obtained path
-mio_branch = root.access_branch_by_path(path_to_mio)
-if mio_branch:
-    print("Accessed mio branch:", mio_branch.data)
-else:
-    print("mio branch not found.")
