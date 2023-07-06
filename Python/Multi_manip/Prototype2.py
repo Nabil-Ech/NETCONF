@@ -1,9 +1,5 @@
 import ipaddress
 
-
-
-
-
 def generate_subnets(network, num_routers):
     num_ips_list=[]
     devices = {}
@@ -12,7 +8,6 @@ def generate_subnets(network, num_routers):
         num_ips_list.append(key)
         value = f"Device{i}"
         devices[key] = value
-    print(num_ips_list)
     sorted_ips_list = sorted(num_ips_list, reverse=True)
     subnets = []
     mask = []
