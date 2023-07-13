@@ -1,6 +1,5 @@
 \chapter{Overview of Netconf}
 
-
 \section{Network Configuration Protocol (NETCONF)}
 
 The Network Configuration Protocol (NETCONF) is an Internet Engineering Task Force (IETF) network management protocol that provides a secure mechanism for installing, manipulating and deleting the configuration data on a network device, such as a firewall, router or switch.
@@ -29,4 +28,120 @@ The NETCONF protocol facilitates secure RPC communications between the client an
 \end{itemize}
 
 When a client communicates with a server, it sends one or more RFC request messages to that server, which responds with its own RFC reply messages. The two most common XML elements used for RFC communications are <rpc> and <rpc-reply>. The <RPC> element encloses a request sent from the client to the server. The request information within the element includes the RPC's name and its parameters. The <rpc-reply> element is used to respond to <rpc> messages. All response data is encoded within the <rpc-reply> element.
+
+
+Within the communication flow of a NETCONF session there are 3 main parts. These are:
+\begin{itemize}
+    \item Session Establishment – Each side sends a <hello>, along with its <capabilities>. Announcing what operations (capabilities) it supports.
+    \item Operation Request – The client then sends its request (operation) to the server via the<rpc> message. The response is then sent back to the client within <rpc-reply>.
+    \item Session Close – The session is then closed by the client via <close-session>.
+\end{itemize}
+
+\section{YANG}
+
+YANG (Yet Another Next Generation) is a data modelling language, providing a standardized way to model the operational and configuration data of a network device. YANG, being a language is being protocol independent, can then be converted into any encoding format, e.g. XML or JSON
+Open/Native Models
+You may be asking who creates these models? The models are classified as either Open or Native based, with different groups working across each one.
+\begin{itemize}
+    \item Open Models – Designed to be independent of the underlying platform and normalize the per-vendor configuration of network devices. Open YANG Models are developed by Vendors and Standards bodies, such as IETF, ITU, OpenConfig etc.
+    \item Native Models – Native Models are developed by the vendors. They relate and are designed to integrate to features or configuration only relevant to that platform.
+\end{itemize}
+
+\subsection*{Components}
+A YANG model is made up from various components. Let’s look at these components, in relation to our example (seen within Figure 3.2).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Images/yang.jpg}
+    \caption{YANG Structure.}
+    \label{fig:example}
+\end{figure}
+
+
+\begin{itemize}
+    \item Container – A collection of information logically grouped. Such a container for configuration, and one for state.
+    \item List – Within a container you can have a list or even multiple lists. Such as a list of interfaces.
+    \item Key – Each item within the list is references via a key.
+    \item Leaf – Inside our list we have leaf’s. Containing our information.
+    \item Data Type – Each leaf is associated against a data type.
+\end{itemize}
+
+\section{XML}
+Extensible Markup Language (XML) lets you define and store data in a shareable manner. XML supports information exchange between computer systems such as websites, databases, and third-party applications. Predefined rules make it easy to transmit data as XML files over any network because the recipient can use those rules to read the data accurately and efficiently.
+
+In the context of NETCONF, XML is used as the format for exchanging configuration information between the client and the network device. NETCONF defines a set of standardized XML-based messages that are used to manage the configuration and operational state of network devices.
+
+When a client sends a request to a network device using NETCONF, it typically includes an XML document that specifies the desired configuration changes or queries. The network device processes the XML request, performs the necessary operations, and sends a response back to the client in XML format.
+
+The use of XML in NETCONF provides several benefits. First, XML is a widely adopted standard for data representation, making it compatible with a variety of systems and tools. Second, XML allows for structured and hierarchical representation of complex network configurations. Finally, XML's human-readable nature makes it easier for administrators and developers to understand and work with the configuration data.
+
+
+\section{RPC}
+Remote Procedure Call is a software communication protocol that one program can use to request a service from a program located in another computer on a network without having to understand the network's details. RPC is used to call other processes on the remote systems like a local system. A procedure call is also sometimes known as a function call or a subroutine call.
+\subsection*{RPC Model}
+The NETCONF protocol uses an RPC-based communication model.  NETCONF peers use \textless{rpc}\textgreater{} and \textless{rpc-reply}\textgreater{} elements to provide transport-protocol-independent framing of NETCONF requests and responses.
+
+%The syntax and XML encoding of the Messages-layer RPCs are formally defined in the XML schema in
+\subsection*{\textless{rpc}\textgreater{} Element}
+The \textless{rpc}\textgreater{} element is used to enclose a NETCONF request sent from theclient to the server.
+
+The \textless{rpc}\textgreater{} element has a mandatory attribute "message-id", which is a
+   string chosen by the sender of the RPC that will commonly encode a
+   monotonically increasing integer.  The receiver of the RPC does not
+   decode or interpret this string but simply saves it to be used as a
+   "message-id" attribute in any resulting \textless{rpc-reply}\textgreater{} message. 
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Images/rpc.png}
+    \caption{\textless{rpc}\textgreater{}  Model.}
+    \label{fig:example}
+\end{figure}
+
+The name and parameters of an RPC are encoded as the contents of the
+\textless{rpc}\textgreater{} element.  The name of the RPC is an element directly inside the
+\textless{rpc}\textgreater{} element, and any parameters are encoded inside this element.
+
+The following example invokes the NETCONF \textless{get}\textgreater{} method with no
+   parameters:
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Images/rpc_get.png}
+    \caption{\textless{rpc}\textgreater{} \textless{get}\textgreater{} Model.}
+    \label{fig:example}
+\end{figure}
+
+
+\subsection*{\textless{rpc-reply}\textgreater{} Element}
+
+
+The \textless{rpc-reply}\textgreater{} message is sent in response to an \textless{rpc}\textgreater{} message.
+
+The \textless{rpc-reply}\textgreater{} element has a mandatory attribute "message-id", which
+is equal to the "message-id" attribute of the \textless{rpc}\textgreater{} for which this is
+a response.
+
+A NETCONF server MUST also return any additional attributes included
+in the \textless{rpc}\textgreater{} element unmodified in the \textless{rpc-reply}\textgreater{} element.
+
+The response data is encoded as one or more child elements to the
+\textless{rpc-reply}\textgreater{} element.
+
+For example:
+
+The following \textless{rpc}\textgreater{} element invokes the NETCONF \textless{get}\textgreater{} method and
+includes an additional attribute called "user-id".  Note that the
+"user-id" attribute is not in the NETCONF namespace.  The returned
+\textless{rpc-reply}\textgreater{} element returns the "user-id" attribute, as well as the
+requested content.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Images/rpc-reply-get.png}
+    \caption{\textless{rpc-reply}\textgreater{} \textless{get}\textgreater{} Model.}
+    \label{fig:example}
+\end{figure}
 

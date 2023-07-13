@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.11)  12 JUL 2023 15:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.11)  13 JUL 2023 16:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -281,7 +281,20 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count287
 \l__pdf_internal_box=\box53
-) (text.aux (Introduction.aux) (Background.aux) (Overview.aux))
+) (text.aux (Introduction.aux) (Background.aux) (Overview.aux
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+))
 \openout1 = `text.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
@@ -433,17 +446,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
  (Overview.tex
 Chapter 3.
-<Images/network_configuration_protocol-f_mobile.png, id=50, 562.1pt x 343.2825pt>
+<Images/network_configuration_protocol-f_mobile.png, id=65, 562.1pt x 343.2825pt>
 File: Images/network_configuration_protocol-f_mobile.png Graphic file (type png)
 <use Images/network_configuration_protocol-f_mobile.png>
-Package pdftex.def Info: Images/network_configuration_protocol-f_mobile.png  used on input line 17.
+Package pdftex.def Info: Images/network_configuration_protocol-f_mobile.png  used on input line 16.
 (pdftex.def)             Requested size: 483.69687pt x 295.40051pt.
 [5
 
 
 
 
-])
+]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -451,26 +464,88 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[6 <./Images/network_configuration_protocol-f_mobile.png>] (text.aux (Introduction.aux) (Background.aux) (Overview.aux))
+[6 <./Images/network_configuration_protocol-f_mobile.png>]
+<Images/yang.jpg, id=78, 519.9425pt x 429.605pt>
+File: Images/yang.jpg Graphic file (type jpg)
+<use Images/yang.jpg>
+Package pdftex.def Info: Images/yang.jpg  used on input line 55.
+(pdftex.def)             Requested size: 338.58632pt x 279.7578pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[7 <./Images/yang.jpg>]
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 82.
+ (C:\Users\pc\AppData\Local\Programs\MiKTeX\tex/latex/base\omlcmr.fd
+File: omlcmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 82.
+LaTeX Font Info:    Font shape `OML/cmr/bx/n' in size <12> not available
+(Font)              Font shape `OML/cmm/b/it' tried instead on input line 85.
+<Images/rpc.png, id=85, 542.025pt x 138.5175pt>
+File: Images/rpc.png Graphic file (type png)
+<use Images/rpc.png>
+Package pdftex.def Info: Images/rpc.png  used on input line 97.
+(pdftex.def)             Requested size: 338.58632pt x 86.53094pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[8]
+<Images/rpc_get.png, id=95, 539.01375pt x 88.07906pt>
+File: Images/rpc_get.png Graphic file (type png)
+<use Images/rpc_get.png>
+Package pdftex.def Info: Images/rpc_get.png  used on input line 112.
+(pdftex.def)             Requested size: 338.58632pt x 55.32881pt.
+<Images/rpc-reply-get.png, id=96, 537.50812pt x 328.97906pt>
+File: Images/rpc-reply-get.png Graphic file (type png)
+<use Images/rpc-reply-get.png>
+Package pdftex.def Info: Images/rpc-reply-get.png  used on input line 143.
+(pdftex.def)             Requested size: 241.84843pt x 148.01912pt.
+)
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[9 <./Images/rpc.png> <./Images/rpc_get.png> <./Images/rpc-reply-get.png>] (text.aux (Introduction.aux) (Background.aux) (Overview.aux))
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `text.out' has not changed.
-(rerunfilecheck)             Checksum: CBA8F6806B68F7F42CC7A2F05BBC81C5;609.
+(rerunfilecheck)             Checksum: D6CB740F8ACE20E9A53EF5283F26AD2B;821.
  ) 
 Here is how much of TeX's memory you used:
- 10703 strings out of 475550
- 166317 string characters out of 5763949
- 1926238 words of memory out of 5000000
- 31734 multiletter control sequences out of 15000+600000
+ 10769 strings out of 475550
+ 167559 string characters out of 5763949
+ 1928238 words of memory out of 5000000
+ 31783 multiletter control sequences out of 15000+600000
  570762 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,31n,79p,905b,507s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\pc\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb>
-Output written on text.pdf (7 pages, 125867 bytes).
+ 75i,31n,79p,905b,513s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\pc\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/pc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb>
+Output written on text.pdf (10 pages, 353822 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 154 PDF objects out of 1000 (max. 8388607)
+ 27 named destinations out of 1000 (max. 500000)
+ 82 words of extra memory for PDF output out of 10000 (max. 10000000)
 

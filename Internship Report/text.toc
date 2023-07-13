@@ -2,3 +2,6 @@
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}%
 \contentsline {chapter}{\numberline {3}Overview of Netconf}{5}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Network Configuration Protocol (NETCONF)}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}YANG}{7}{section.3.2}%
+\contentsline {section}{\numberline {3.3}XML}{8}{section.3.3}%
+\contentsline {section}{\numberline {3.4}RPC}{8}{section.3.4}%
