@@ -20,6 +20,14 @@
 \contentsline {subsubsection}{Step 2:}{14}{section*.12}%
 \contentsline {subsubsection}{Step 3:}{14}{section*.13}%
 \contentsline {subsubsection}{Result :}{14}{section*.14}%
-\contentsline {section}{\numberline {4.3}SSH connection establishment}{15}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Secure SHell (SSH)}{15}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Establishing an SSH connection between the router an host}{15}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.3}Enabling NETCONG-YANG}{15}{section.4.3}%
+\contentsline {section}{\numberline {4.4}SSH connection establishment}{15}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Secure SHell (SSH)}{15}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Establishing an SSH connection between the router an host}{15}{subsection.4.4.2}%
+\contentsline {subsubsection}{On Cisco router}{15}{section*.15}%
+\contentsline {subsubsection}{Step 1:}{15}{section*.16}%
+\contentsline {subsubsection}{Step 2:}{15}{section*.17}%
+\contentsline {subsubsection}{Step 3:}{15}{section*.18}%
+\contentsline {subsubsection}{Step 4:}{16}{section*.19}%
+\contentsline {subsubsection}{On the local machine}{16}{section*.20}%
+\contentsline {subsection}{\numberline {4.4.3}Result}{16}{subsection.4.4.3}%
