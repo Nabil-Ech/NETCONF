@@ -31,3 +31,6 @@
 \contentsline {subsubsection}{Step 4:}{16}{section*.19}%
 \contentsline {subsubsection}{On the local machine}{16}{section*.20}%
 \contentsline {subsection}{\numberline {4.4.3}Result}{16}{subsection.4.4.3}%
+\contentsline {chapter}{\numberline {5}Configuring Networks with NETCONF}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}NETCONF base operations}{17}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Python Automation}{18}{section.5.2}%

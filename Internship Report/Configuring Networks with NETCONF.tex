@@ -1,0 +1,26 @@
+\chapter{Configuring Networks with NETCONF}
+
+    In this chapter, we explore the practical implementation of NETCONF (Network Configuration Protocol) for configuring networks in a Cisco router. Building upon the foundational understanding of DHCP, NAT, SSH, and the fundamentals of NETCONF established earlier, we delve into the specifics of leveraging NETCONF to streamline network configuration processes.
+
+    Before delving further, it is crucial to first explore the fundamental base operations of NETCONF. Understanding these operations provides a solid foundation for effectively leveraging NETCONF in network configuration management.
+
+\section{NETCONF base operations}
+
+The NETCONF protocol supports a set of low-level operations for retrieving and managing device configuration information. The operations are specified through XML elements, which are described in the following table. NETCONF also supports additional operations based on each device's capabilities:
+
+\begin{itemize}
+    \item \textless{get}\textgreater{} : Retrieves all or part of the information about the running configuration and device state.
+    \item \textless get-config\textgreater : Retrieves all or part of the configuration information available from a specified configuration datastore.
+    \item \textless edit-config\textgreater : Submits all or part of a configuration to a target configuration datastore.
+    \item \textless copy-config\textgreater : Creates or replaces a target configuration datastore with the information from another configuration datastore.
+    \item \textless delete-config\textgreater : Deletes a target configuration datastore, but only if it's not running.
+    \item \textless lock\textgreater : Locks a target configuration datastore, unless a lock already exists on any part of that datastore.
+    \item \textless unlock\textgreater : Releases a lock on a configuration datastore that was previously locked through a \textless lock\textgreater operation.
+    \item \textless close-session\textgreater : Requests the NETCONF server to gracefully terminate an open session.
+    \item \textless kill-session\textgreater : Forces a session's termination, causing current operations to be aborted.
+\end{itemize}
+
+\section{Python Automation}
+
+
+There are multiple ways to configure networks using NETCONF. Some common approaches include using command-line interfaces (CLI) on network devices, network management tools with built-in NETCONF support, or developing custom automation scripts. Python is a preferred choice for configuring networks with NETCONF due to its ease of use, rich ecosystem, comprehensive documentation, and most importantly, its integration capabilities.
