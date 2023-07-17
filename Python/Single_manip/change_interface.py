@@ -15,7 +15,7 @@ ip_address= "10.10.0.65"
 mask = "255.255.255.192"
 
 # Define the NETCONF configuration payload to change the interface
-config_xml = f"""
+filter = f"""
 <config>
     <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
         <interface>
@@ -35,12 +35,13 @@ config_xml = f"""
 
 
 # Connect to the device and lock the candidate configuration datastore
+
 with manager.connect(**device, hostkey_verify=False) as m:
         # Lock the candidate datastore
         m.lock('candidate')
 
         # Edit the configuration in the candidate datastore
-        m.edit_config(target='candidate', config=config_xml)
+        m.edit_config(target='candidate', config=filter)
 
         # Validate the candidate configuration
         m.validate()
@@ -50,6 +51,6 @@ with manager.connect(**device, hostkey_verify=False) as m:
 
         # Unlock the candidate datastore
         m.unlock('candidate')
-        
+
 print("Interface changed successfully.")
     

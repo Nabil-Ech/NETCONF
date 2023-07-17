@@ -20,13 +20,11 @@ The NETCONF protocol supports a set of low-level operations for retrieving and m
     \item \textless kill-session\textgreater : Forces a session's termination, causing current operations to be aborted.
 \end{itemize}
 
-\section{Python Automation}
+\section{Python code structure}
 
 There are multiple ways to configure networks using NETCONF. Some common approaches include using command-line interfaces (CLI) on network devices, network management tools with built-in NETCONF support, or developing custom automation scripts. Python is a preferred choice for configuring networks with NETCONF due to its ease of use, rich ecosystem, comprehensive documentation, and most importantly, its integration capabilities.
 
-\subsection{Python code structure}
-
-\subsubsection{Libraries}
+\subsection{Libraries}
 
 The ncclient library is a popular Python library used for interacting with NETCONF-enabled devices. It provides a high-level API (Application Programming Interface) that simplifies the process of establishing NETCONF sessions, retrieving device information, and configuring network devices. Its key benefits include:
 
@@ -56,7 +54,7 @@ The ncclient library is a popular Python library used for interacting with NETCO
     \end{itemize}
 
 \end{enumerate}
-\subsubsection{Session establishment}
+\subsection{Session establishment}
 
 In this section, we discuss the process of establishing a NETCONF session using the manager.connect() method as an example. This method is part of the ncclient library and allows us to establish a secure connection with the router.
 
@@ -74,7 +72,7 @@ In this section, we discuss the process of establishing a NETCONF session using 
     \item \texttt{hostkey\_verify}: By setting this parameter to \texttt{False}, host key verification for the SSH connection is disabled. This option can be useful during testing or when connecting to devices with self-signed or invalid SSH certificates. However, exercise caution and ensure the security implications are understood before using this option.
     \item \texttt{with} statement: The \texttt{with} statement ensures that the NETCONF session is properly established and automatically closed when the block of code inside the \texttt{with} statement finishes execution.
 \end{enumerate}
-\subsubsection{Filter}
+\subsection{Filter}
 The filter is a mechanism used to retrieve specific subsets of configuration or operational data from a network device. It allows us to define criteria for selecting the desired data elements using XPath expressions. By utilizing the filter parameter in NETCONF operations, such as <get-config> or <get>, we can retrieve only the relevant information needed for our application or task. This targeted data retrieval capability enhances network management and automation by minimizing unnecessary data transfer, optimizing response times, and reducing network bandwidth usage. 
 
 For example, for the \texttt{<get-config>} operation in NETCONF with Python, we can use the \textit{filter} parameter to retrieve only the interface configurations from a network device. By specifying a filter criterion using XPath expressions that target the interface elements, such as \texttt{'/interfaces/interface'}, we can narrow down the retrieved data to only the relevant interface information.
@@ -84,4 +82,81 @@ For example, for the \texttt{<get-config>} operation in NETCONF with Python, we 
     \includegraphics[width=0.8\linewidth]{Images/filter_int.png}
     \caption{Filter for interfaces.}
 \end{figure}
-\subsubsection{Base operation sending}
+\subsection{Configuration modification/retrieval and commit}
+
+This section showcases the process of connecting to the router, making modifications to the configuration, retrieving the configuration, and committing the changes.
+
+The following example focuses on modifying a router's configuration, specifically changing its interface configuration, and then committing the changes:
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.7\linewidth]{Images/change_int.png}
+  \caption{Changing the interface}
+\end{figure}
+
+\begin{enumerate}
+  \item Establishing a connection using the \texttt{manager.connect()} method.
+  \item Locking the candidate configuration datastore to prevent concurrent modifications.
+  \item Editing the configuration in the candidate datastore using the \texttt{edit\_config()} method.
+  \item Validating the candidate configuration using the \texttt{validate()} method to ensure correctness.
+  \item Committing the modified candidate configuration using the \texttt{commit()} method to apply the changes.
+  \item Unlocking the candidate configuration datastore.
+\end{enumerate}
+
+\subsubsection{Limitation of Using Running Configuration Directly in Cisco CSR1000v}
+
+When working with network devices, it is common to have the ability to directly modify the running configuration. However, it's important to note that not all devices support this feature. One such example is the Cisco CSR1000v router.
+
+The Cisco CSR1000v router, does not allow direct modifications to the running configuration. This limitation is revealed by examining the capabilities of the router through the use of NETCONF. The capabilities provided by the router specify the supported operations and features. In the case of the Cisco CSR1000v, the capabilities indicate that editing the running configuration directly is not available.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\linewidth]{Images/candidate_datastore.png}
+  \caption{Router's capabilities}
+\end{figure}
+
+This limitation in modifying the running configuration directly with the Cisco CSR1000v router reinforces the importance of using a candidate configuration when making changes (Chapter 4 provides the process of enabling the candidate datastore). By employing a candidate configuration, network administrators can safely apply and validate changes before committing them to the running configuration. This approach ensures greater control and reduces the risk of disrupting the network due to erroneous or incomplete configurations.
+
+Understanding the limitations of the Cisco CSR1000v router in supporting direct modifications to the running configuration enables network administrators to adopt appropriate configuration management practices. By utilizing candidate configurations and committing changes only after thorough testing and validation, network stability and reliability can be maintained effectively.
+
+\section{Python automation}
+\subsection{Scenario}
+
+In the context of a large institution such as a university, the establishment and management of a network infrastructure are critical for seamless communication and efficient resource allocation. One common scenario is the implementation of a centralized IP address pool shared by multiple routers within the network. This approach allows for optimal utilization of available IP addresses while accommodating the diverse needs of various departments, faculties, or network segments.
+
+To ensure effective allocation of subnets within this shared IP pool, a systematic approach is required. By analyzing the specific requirements of each router, such as the number of IP addresses needed for its operations, it becomes possible to devise a subnet allocation strategy that best caters to the network's demands. This approach allows for efficient utilization of IP resources, prevents IP address conflicts, and simplifies network management.
+
+In this section, we will focus on the automation and leveraging tools like the Python script provided in this report, the subnet allocation process can be streamlined. We will creat a script that enables network administrators to input the desired number of IP addresses for each router, and based on this information, it calculates the appropriate subnets and assigns them accordingly. The generated subnets can be further configured with relevant network parameters such as subnet masks, DHCP server networks, and default routers.
+
+The proposed solution offers a practical and efficient method for managing a large-scale network infrastructure within an institution. It provides the flexibility to allocate subnets based on individual router requirements, ensuring optimized utilization of IP addresses while maintaining a coherent and manageable network architecture. This approach promotes scalability, adaptability, and ease of network administration, making it well-suited for complex environments like universities and other large institutions.
+
+\subsection{Solving the Subnet Allocation Challenge}
+
+\textbf{1. Router IP Address Requirement Assessment:} The first step is to assess the IP address requirements for each router. By understanding the number of IP addresses needed for their operations, we can allocate appropriate subnets. This information can be gathered through consultation with network administrators, department representatives, or through network traffic analysis.
+
+\textbf{2. Developing an Automated Subnet Allocation Script:}
+
+
+\textbf{a. Reordering the List of IP Requirements}
+
+To streamline the subnet allocation process, it is beneficial to reorder the list of IP requirements in descending order. This reordering ensures that routers with larger IP address needs are given priority during the allocation process. By prioritizing routers with greater IP requirements, we can allocate larger subnets to accommodate their needs while maximizing the utilization of available IP addresses.
+
+\textbf{b. Visualizing the IP Pool as a Circular Space}
+
+To conceptualize the allocation process, we can envision the IP pool as a circular space. Imagine a circle representing the entire pool of available IP addresses. Each router's IP requirement corresponds to a slice or segment within this circular space. The size of each slice is directly proportional to the number of IP addresses required by the router. By visualizing the IP pool in this manner, we can better understand the allocation process and optimize the subnet assignments.
+
+\textbf{c. Allocating Subnets based on Slice Proportions}
+
+With the IP requirements reordered and the IP pool visualized as a circular space, the next step is to allocate subnets based on the proportions determined by each router's IP requirement. Starting from the router with the highest IP requirement, we assign a subnet slice to that router that corresponds to its proportional share of the circular space. We then move on to the router with the second-highest IP requirement and allocate the next slice accordingly. This process continues until all routers have been assigned subnets.
+
+\textbf{d. Ensuring Efficient Resource Utilization}
+
+By following this systematic approach, we ensure that routers with larger IP requirements are allocated larger subnets, while routers with smaller IP requirements receive proportionally smaller subnets. This allocation strategy maximizes the utilization of available IP addresses, reduces IP address wastage, and avoids unnecessary subnet fragmentation.
+
+
+\textbf{3. IP Pool Management:} It is essential to maintain an accurate inventory of the IP pool and track the allocation of subnets to ensure efficient resource utilization. Network administrators can use IP address management (IPAM) tools or custom scripts to monitor and manage the IP pool effectively.
+
+\textbf{4. Addressing IP Conflicts:} With multiple routers sharing a single IP pool, the risk of IP conflicts increases. Implementing mechanisms like DHCP servers and DHCP reservations can help mitigate IP conflicts and ensure proper IP address assignment within each subnet.
+
+\textbf{5. Configuration and Documentation:} After the subnet allocation process, configuring each router with the assigned subnets, subnet masks, default routers, and other relevant network parameters is essential. Additionally, maintaining proper documentation, including subnet allocation records and network diagrams, aids in network troubleshooting and future expansion.
+
+By following these steps and employing the provided code snippets as a foundation, network administrators can successfully solve the subnet allocation challenge in a large institution network. This approach promotes efficient IP address utilization, reduces IP conflicts, simplifies network management, and facilitates future scalability.
