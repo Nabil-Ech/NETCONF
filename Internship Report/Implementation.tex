@@ -90,21 +90,22 @@ With DHCP, this entire process is automated and managed centrally. The DHCP serv
 \subsection{DHCP configuration on Cisco router:}
 \subsubsection{Step 1:}
 Defining the pool. The name of the pool we will give is DHCP-POOL for the subnet 10.10.10.0/24
-\begin{verbatim}
-    DHCP1(dhcp-config)#enable
-    DHCP1(dhcp-config)#config terminal
-    DHCP1(dhcp-config)#ip dhcp pool DHCP-POOL
-\end{verbatim}
+\begin{lstlisting}[style=cliStyle,  backgroundcolor=\color{codebackground}]
+                DHCP1(dhcp-config)#enable
+                DHCP1(dhcp-config)#config terminal
+                DHCP1(dhcp-config)#ip dhcp pool DHCP-POOL
+\end{lstlisting}
 \subsubsection{Step 2:}
 Adding the subnet that we are going to use.
-\begin{verbatim}
-    DHCP1(dhcp-config)#network 10.10.10.0/24
-\end{verbatim}
+\begin{lstlisting}[style=cliStyle,  backgroundcolor=\color{codebackground}]
+                DHCP1(dhcp-config)#network 10.10.10.0/24
+\end{lstlisting}
 \subsubsection{Step 3:}
 Configuring the default gateway for this subnet.
-\begin{verbatim}
-    DHCP1(dhcp-config)#default-router 10.10.10.1
-\end{verbatim}
+\begin{lstlisting}[style=cliStyle,  backgroundcolor=\color{codebackground}]
+                DHCP1(dhcp-config)#default-router 10.10.10.1
+\end{lstlisting}
+
 We can also exclude the first 10 IP for manual reservations from each subnet if we are planning to add any printers or servers in the location we could use the static IP configuration from those 10 IPs later, also set a DNS server and domain, but in our case we wont need these functionalities.
 %i need to include the hole code link to ANEX here
 
@@ -120,17 +121,18 @@ Consequently, when the end device (VPC) requests an IP address from the DHCP ser
 
 Enabling NETCONF-YANG functionality in a Cisco router is a simple process accomplished through a series of command lines entered directly into the router's console.
 
-\begin{verbatim}
-    enable 
-    configure terminal
-    netconf-yang
-\end{verbatim}
+\begin{lstlisting}[style=cliStyle,  backgroundcolor=\color{codebackground}]
+                enable 
+                configure terminal
+                netconf-yang
+\end{lstlisting}
 
 In the case of Cisco CSR 1000v, we will need to enable candidate-datastore feature which will be discussed later:
 
-\begin{verbatim}
-    netconf-yang feature candidate-datastore
-\end{verbatim}
+
+\begin{lstlisting}[style=cliStyle,  backgroundcolor=\color{codebackground}]
+                netconf-yang feature candidate-datastore
+\end{lstlisting}
 \section{SSH connection establishment}
 \subsection{Secure SHell (SSH)}
 SSH, also known as Secure Shell or Secure Socket Shell, is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network.
@@ -145,41 +147,64 @@ In our scenario, we will establish an SSH connection between the local PC, actin
 \subsubsection{On Cisco router}
 \subsubsection{Step 1:}
 First, we will need to configure the hostname (Ex: Server1) and domain name 
-\begin{verbatim}
-    hostname Server1
-    ip domain-name Server1-domain
-    %I need to change this 
-\end{verbatim}
+\begin{lstlisting}[style=cliStyle,  backgroundcolor=\color{codebackground}]
+                hostname Server1
+                ip domain-name Server1-domain
+\end{lstlisting}
 \subsubsection{Step 2:}
 Generate rsa modulus and enter modulus lenght (2048 recommended), also configure the device to run SSHv2
-\begin{verbatim}
-    crypto key generate rsa modulus 2048 
-    ip ssh version 
-\end{verbatim}
+\begin{lstlisting}[style=xmlStyle,  backgroundcolor=\color{codebackground}]
+                crypto key generate rsa modulus 2048 
+                ip ssh version 
+\end{lstlisting}
 \subsubsection{Step 3:}
 Configure the virtual terminal line settings
-\begin{verbatim}
-    line vty 0 4 // configure the virtual terminal line settings
-    login local
-    transport input all
-\end{verbatim}
+\begin{lstlisting}[style=xmlStyle,  backgroundcolor=\color{codebackground}]
+                line vty 0 4 
+                login local
+                transport input all
+\end{lstlisting}
 \subsubsection{Step 4:}
 Create user and password for SSH client to access, and set privilege privilege level 15 to the username ‘admin’
-\begin{verbatim}
-    username admin password nabil 
-    username admin privilege 15 
-\end{verbatim}
+\begin{lstlisting}[style=xmlStyle,  backgroundcolor=\color{codebackground}]
+                username admin password nabil 
+                username admin privilege 15 
+\end{lstlisting}
 \indent Finaly, we don't forget to save the change by copying the ruuning configuration to the startup configuration
 \subsubsection{On the local machine}
 \indent First, we need to create a new virtual interface (eth1) with an automatically assigned IP address. In our case, we are using an Ubuntu machine:
-\begin{verbatim}
-    sudo ip link add name eth1 type dummy
-    sudo ip link set eth1 up
-    sudo dhclient eth1
-\end{verbatim}
+\begin{lstlisting}[style=xmlStyle,  backgroundcolor=\color{codebackground}]
+                sudo ip link add name eth1 type dummy
+                sudo ip link set eth1 up
+                sudo dhclient eth1
+\end{lstlisting}
 Following the setup, we can proceed to establish an SSH connection from the local machine, acting as the management server, to the router. The router's IP address is "192.168.1.1", and the default port for NETCONF is "830".
-\begin{verbatim}
-    ssh admin@192.168.1.1 -p 830 -s netconf 
-    password: nabil
-\end{verbatim}
+\begin{lstlisting}[style=ubuntutermStyle,  backgroundcolor=\color{codebackground}]
+                ssh admin@192.168.1.1 -p 830 -s netconf 
+                password: nabil
+\end{lstlisting}
+
 \subsection{Result}
+
+As a result of establishing the SSH connection and initiating the NETCONF session, the first message exchanged between the NETCONF client (host) and the NETCONF server (router) is the "hello" message. 
+
+The "hello" message serves as a handshake to establish the capabilities and supported features between the client and server.
+
+The "hello" message includes information about the NETCONF version supported by both the client and server, the list of supported capabilities (e.g., supported message types, datastores, and supported YANG models), and other essential details required to set up the NETCONF session.
+
+Once the "hello" message exchange is successful, the NETCONF session is established, and the client can proceed to send specific NETCONF requests (e.g., get, edit-config, validate, commit, etc.) to interact with the device's configuration and operational data. Likewise, the server responds to these requests with corresponding messages, allowing for a standardized and programmable method of managing network devices.
+
+
+\begin{lstlisting}[style=xmlStyle, caption={Excerpt from "hello" message.},  backgroundcolor=\color{codebackground}]
+            <?xml version="1.0" encoding="UTF-8"?>
+            <hello xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+            <capabilities>
+                ...........
+                <capability>
+                    urn:ietf:params:netconf:capability:notification:1.1
+                </capability>
+            </capabilities>
+            <session-id>24</session-id></hello>]]>]]>
+\end{lstlisting}
+
+

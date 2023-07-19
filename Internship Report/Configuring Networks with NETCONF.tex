@@ -58,11 +58,16 @@ The ncclient library is a popular Python library used for interacting with NETCO
 
 In this section, we discuss the process of establishing a NETCONF session using the manager.connect() method as an example. This method is part of the ncclient library and allows us to establish a secure connection with the router.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\linewidth]{Images/m_connect.png}
-    \caption{Session establishment.}
-\end{figure}
+\begin{lstlisting}[style=pythonStyle, caption={Session establishment.}, backgroundcolor=\color{codebackground}]
+                    with manager.connect(
+                          host="192.168.1.1",
+                          port=830,
+                          username="admin", 
+                          password="nabil",
+                          hostkey_verify=False
+                          ) as m:           
+\end{lstlisting}
+
 
 \begin{enumerate}
     \item \texttt{manager.connect()}: The \texttt{manager.connect()} method initiates the process of establishing a NETCONF session.
@@ -77,11 +82,15 @@ The filter is a mechanism used to retrieve specific subsets of configuration or 
 
 For example, for the \texttt{<get-config>} operation in NETCONF with Python, we can use the \textit{filter} parameter to retrieve only the interface configurations from a network device. By specifying a filter criterion using XPath expressions that target the interface elements, such as \texttt{'/interfaces/interface'}, we can narrow down the retrieved data to only the relevant interface information.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\linewidth]{Images/filter_int.png}
-    \caption{Filter for interfaces.}
-\end{figure}
+\begin{lstlisting}[style=pythonStyle, caption={Filter for interfaces.}, backgroundcolor=\color{codebackground}]
+  netconf_filter = """
+      <filter>
+        <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+          <interface></interface>
+        </interfaces>
+      </filter>"""          
+\end{lstlisting}
+
 \subsection{Configuration modification/retrieval and commit}
 
 This section showcases the process of connecting to the router, making modifications to the configuration, retrieving the configuration, and committing the changes.
@@ -142,7 +151,8 @@ To streamline the subnet allocation process, it is beneficial to reorder the lis
 
 \textbf{b. Visualizing the IP Pool as a Circular Space}
 
-To conceptualize the allocation process, we can envision the IP pool as a circular space. Imagine a circle representing the entire pool of available IP addresses. Each router's IP requirement corresponds to a slice or segment within this circular space. The size of each slice is directly proportional to the number of IP addresses required by the router. By visualizing the IP pool in this manner, we can better understand the allocation process and optimize the subnet assignments.
+To conceptualize the allocation process, we can envision the IP pool as a circular space. Imagining a circle representing the entire pool of available IP addresses. Each router's IP requirement corresponds to a slice or segment within this circular space. The size of each slice is directly proportional to the number of IP addresses required by the router. By visualizing the IP pool in this manner, we can better understand the allocation process and optimize the subnet assignments.
+
 
 \textbf{c. Allocating Subnets based on Slice Proportions}
 
@@ -151,7 +161,11 @@ With the IP requirements reordered and the IP pool visualized as a circular spac
 \textbf{d. Ensuring Efficient Resource Utilization}
 
 By following this systematic approach, we ensure that routers with larger IP requirements are allocated larger subnets, while routers with smaller IP requirements receive proportionally smaller subnets. This allocation strategy maximizes the utilization of available IP addresses, reduces IP address wastage, and avoids unnecessary subnet fragmentation.
-
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{Images/Pool.png}
+  \caption{Visualizing the IP Pool as a Circular Space.}
+\end{figure}
 
 \textbf{3. IP Pool Management:} It is essential to maintain an accurate inventory of the IP pool and track the allocation of subnets to ensure efficient resource utilization. Network administrators can use IP address management (IPAM) tools or custom scripts to monitor and manage the IP pool effectively.
 
@@ -159,4 +173,59 @@ By following this systematic approach, we ensure that routers with larger IP req
 
 \textbf{5. Configuration and Documentation:} After the subnet allocation process, configuring each router with the assigned subnets, subnet masks, default routers, and other relevant network parameters is essential. Additionally, maintaining proper documentation, including subnet allocation records and network diagrams, aids in network troubleshooting and future expansion.
 
-By following these steps and employing the provided code snippets as a foundation, network administrators can successfully solve the subnet allocation challenge in a large institution network. This approach promotes efficient IP address utilization, reduces IP conflicts, simplifies network management, and facilitates future scalability.
+
+
+\textbf{Example: Router IP Address Requirement Assessment and Subnet Allocation}
+
+To illustrate the process of router IP address requirement assessment and subnet allocation, let's consider a scenario with four routers in a large institution network. Each router has a specific number of IP addresses required for its operations, and we have a general subnet available for allocation.
+
+\subsubsection{Router Information:}
+\begin{itemize}
+  \item Router A: Requires 80 IP addresses.
+  \item Router B: Requires 40 IP addresses.
+  \item Router C: Requires 50 IP addresses.
+  \item Router D: Requires 150 IP addresses.
+\end{itemize}
+
+\subsubsection{General Subnet:}
+
+The available general subnet is "192.168.0.0/23," providing a total of 512 IP addresses.
+
+\subsubsection{Router IP Address Requirement Assessment:}
+
+To begin, we reorder the list of IP requirements in descending order:
+\begin{itemize}
+  \item Router D: 150 IP addresses
+  \item Router A: 80 IP addresses
+  \item Router B: 50 IP addresses
+  \item Router C: 40 IP addresses
+\end{itemize}
+
+
+\subsubsection{Visualizing the IP Pool:}
+
+We conceptualize the IP pool as a circular space, representing the available "192.168.0.0/23" subnet. Each router's IP requirement corresponds to a slice or segment within this circular space. The size of each slice is directly proportional to the number of IP addresses required by the router.
+
+\subsubsection{Allocating Subnets based on Slice Proportions:}
+
+Starting with Router D, which has the highest IP requirement, we allocate a subnet slice proportionate to its need for 150 IP addresses. Router A receives a subnet mask: 24, and a DHCP Server Network: 192.168.0.0  (192.168.0.0 - 192.168.0.255)
+
+Next, we move on to Router A, allocating a Subnet Mask: 25, and a DHCP Server Network: 192.168.0.0  (192.192.0.0 - 192.168.0.127)
+
+For Router B, a subnet with the range (192.168.0.0 - 192.168.0.63) with a subnet mask of 26, satisfying its need for 50 IP addresses.
+
+Finally, Router C receives a subnet with the range (192.168.1.64 - 192.168.1.127) with a subnet mask of 26 to accommodate its requirement of 40 IP addresses.
+
+\subsubsection{Testing Subnet Allocation Code}
+\subsubsection{Input:}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{Images/prototype_input.png}
+  \caption{Input of devices's informations}
+\end{figure}
+\subsubsection{Output:}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.3\linewidth]{Images/prototype_output.png}
+  \caption{Output.}
+\end{figure}

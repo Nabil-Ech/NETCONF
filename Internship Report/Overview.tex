@@ -91,13 +91,15 @@ The \textless{rpc}\textgreater{} element has a mandatory attribute "message-id",
    decode or interpret this string but simply saves it to be used as a
    "message-id" attribute in any resulting \textless{rpc-reply}\textgreater{} message. 
 
+\begin{lstlisting}[style=xmlStyle, caption={\textless{rpc}\textgreater{} Model.}, backgroundcolor=\color{codebackground}]
+                <rpc message-id="101"
+                        xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+                    <some-method>
+                        <!-- method parameters here... -->
+                    </some-method>
+                </rpc>             
+\end{lstlisting}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.7\linewidth]{Images/rpc.png}
-    \caption{\textless{rpc}\textgreater{}  Model.}
-    \label{fig:example}
-\end{figure}
 
 The name and parameters of an RPC are encoded as the contents of the
 \textless{rpc}\textgreater{} element.  The name of the RPC is an element directly inside the
@@ -106,13 +108,14 @@ The name and parameters of an RPC are encoded as the contents of the
 The following example invokes the NETCONF \textless{get}\textgreater{} method with no
    parameters:
 
+\begin{lstlisting}[style=xmlStyle, caption={\textless{rpc}\textgreater{} \textless{get}\textgreater{} Model.}, backgroundcolor=\color{codebackground}]
+                <rpc message-id="101"
+                        xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+                    <get/>
+                </rpc>           
+\end{lstlisting}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.7\linewidth]{Images/rpc_get.png}
-    \caption{\textless{rpc}\textgreater{} \textless{get}\textgreater{} Model.}
-    \label{fig:example}
-\end{figure}
+
 
 
 \subsection*{\textless{rpc-reply}\textgreater{} Element}
@@ -138,10 +141,23 @@ includes an additional attribute called "user-id".  Note that the
 \textless{rpc-reply}\textgreater{} element returns the "user-id" attribute, as well as the
 requested content.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\linewidth]{Images/rpc-reply-get.png}
-    \caption{\textless{rpc-reply}\textgreater{} \textless{get}\textgreater{} Model.}
-    \label{fig:example}
-\end{figure}
+\begin{lstlisting}[style=xmlStyle, caption={\textless{rpc-reply}\textgreater{} \textless{get}\textgreater{} Model.}, backgroundcolor=\color{codebackground}]
+                <rpc message-id="101"
+                        xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
+                        xmlns:ex="http://example.net/content/1.0"
+                        ex:user-id="fred">
+                    <get/>
+                </rpc>
+
+                <rpc-reply message-id="101"
+                    xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"
+                    xmlns:ex="http://example.net/content/1.0"
+                    ex:user-id="fred">
+                    <data>
+                        <!-- contents here... -->
+                    </data>
+                </rpc-reply>         
+\end{lstlisting}
+
+
 
