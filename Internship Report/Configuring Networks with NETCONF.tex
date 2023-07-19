@@ -96,12 +96,24 @@ For example, for the \texttt{<get-config>} operation in NETCONF with Python, we 
 This section showcases the process of connecting to the router, making modifications to the configuration, retrieving the configuration, and committing the changes.
 
 The following example focuses on modifying a router's configuration, specifically changing its interface configuration, and then committing the changes:
+\begin{lstlisting}[style=pythonStyle, caption={Changing the interface.}, backgroundcolor=\color{codebackground}]
+              with manager.connect(**device, hostkey_verify=False) as m:
+                    # Lock the candidate datastore
+                    m.lock('candidate')
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.7\linewidth]{Images/change_int.png}
-  \caption{Changing the interface}
-\end{figure}
+                    # Edit the configuration in the candidate datastore
+                    m.edit_config(target='candidate', config=filter)
+
+                    # Validate the candidate configuration
+                    m.validate()
+
+                    # Commit the candidate configuration to apply the changes
+                    m.commit()
+
+                    # Unlock the candidate datastore
+                    m.unlock('candidate')
+              print("Interface changed successfully.")          
+\end{lstlisting}
 
 \begin{enumerate}
   \item Establishing a connection using the \texttt{manager.connect()} method.
@@ -117,11 +129,14 @@ The following example focuses on modifying a router's configuration, specificall
 When working with network devices, it is common to have the ability to directly modify the running configuration. However, it's important to note that not all devices support this feature. One such example is the Cisco CSR1000v router.
 
 The Cisco CSR1000v router, does not allow direct modifications to the running configuration. This limitation is revealed by examining the capabilities of the router through the use of NETCONF. The capabilities provided by the router specify the supported operations and features. In the case of the Cisco CSR1000v, the capabilities indicate that editing the running configuration directly is not available.
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.6\linewidth]{Images/candidate_datastore.png}
-  \caption{Router's capabilities}
-\end{figure}
+
+\begin{lstlisting}[style=pythonStyle, caption={Router's capabilities.}, backgroundcolor=\color{codebackground}]
+              urn:ietf:params:netconf:base:1.0
+              urn:ietf:params:netconf:base:1.1
+              urn:ietf:params:netconf:capability:candidate:1.0
+              urn:ietf:params:netconf:capability:xpath:1.0
+              urn:ietf:params:netconf:capability:validate:1.0
+\end{lstlisting}
 
 This limitation in modifying the running configuration directly with the Cisco CSR1000v router reinforces the importance of using a candidate configuration when making changes (Chapter 4 provides the process of enabling the candidate datastore). By employing a candidate configuration, network administrators can safely apply and validate changes before committing them to the running configuration. This approach ensures greater control and reduces the risk of disrupting the network due to erroneous or incomplete configurations.
 
@@ -218,14 +233,40 @@ Finally, Router C receives a subnet with the range (192.168.1.64 - 192.168.1.127
 
 \subsubsection{Testing Subnet Allocation Code}
 \subsubsection{Input:}
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\linewidth]{Images/prototype_input.png}
-  \caption{Input of devices's informations}
-\end{figure}
+
+\begin{lstlisting}[style=pythonStyle, caption={Routers informations input.}, backgroundcolor=\color{codebackground}]
+              Enter the network and subnet in CIDR notation 
+              (e.g., 10.10.0.0/23): 192.168.0.0/23
+              Enter the number of routers: 4
+              Enter the num_ips_router for Device1: 80
+              Enter the num_ips_router for Device2: 50
+              Enter the num_ips_router for Device3: 40
+              Enter the num_ips_router for Device4: 150
+\end{lstlisting}
 \subsubsection{Output:}
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.3\linewidth]{Images/prototype_output.png}
-  \caption{Output.}
-\end{figure}
+
+\begin{lstlisting}[style=pythonStyle, caption={Output.}, backgroundcolor=\color{codebackground}]
+              Device4
+                Interface IP: 192.168.0.1
+                Subnet Mask: 255.255.255.0 ( 24 )       
+                DHCP Server Network: 192.168.0.0        
+                DHCP Server Default Router: 192.168.0.1
+              Device1
+                Interface IP: 192.168.0.1
+                Subnet Mask: 255.255.255.128 ( 25 )     
+                DHCP Server Network: 192.168.0.0        
+                DHCP Server Default Router: 192.168.0.1 
+
+              Device2
+                Interface IP: 192.168.0.1
+                Subnet Mask: 255.255.255.192 ( 26 )     
+                DHCP Server Network: 192.168.0.0        
+                DHCP Server Default Router: 192.168.0.1 
+
+              Device3
+                Interface IP: 192.168.0.65
+                Subnet Mask: 255.255.255.192 ( 26 )     
+                DHCP Server Network: 192.168.0.64       
+                DHCP Server Default Router: 192.168.0.65
+
+\end{lstlisting}
