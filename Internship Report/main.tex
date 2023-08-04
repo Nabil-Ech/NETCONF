@@ -1,85 +1,24 @@
-\documentclass[a4paper, 11pt]{report}
-\usepackage[top=3cm, bottom=3cm, left = 2cm, right = 2cm]{geometry} 
-\geometry{a4paper} 
-\usepackage[utf8]{inputenc}
-\usepackage{textcomp}
-\usepackage{graphicx} 
-\usepackage{caption}
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{amsmath,amssymb}  
-\usepackage{bm}  
-\usepackage[pdftex,bookmarks,colorlinks,breaklinks]{hyperref}  
-%\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black} % black links, for printed output
-\usepackage{memhfixc} 
-\usepackage{pdfsync}  
-\usepackage{fancyhdr}
-\lstdefinestyle{pythonStyle}{
-    language=Python,
-    basicstyle=\ttfamily\small,
-    keywordstyle=\color{blue},
-    commentstyle=\color{gray},
-    stringstyle=\color{green!70!black},
-    backgroundcolor=\color{codebackground},
-    frame=single,
-    framesep=2pt,
-    framerule=0pt,
-    rulecolor=\color{codebackground},
-    showstringspaces=false
-}
+\documentclass[a4paper, 12pt]{report}
 
-\lstdefinestyle{cliStyle}{
-    language=bash,
-    basicstyle=\ttfamily\small,
-    keywordstyle=\color{blue},
-    commentstyle=\color{gray},
-    stringstyle=\color{green!70!black},
-    backgroundcolor=\color{codebackground},
-    frame=single,
-    framesep=2pt,
-    framerule=0pt,
-    rulecolor=\color{codebackground},
-    showstringspaces=false
-}
+\usepackage{settings}
 
-\lstdefinestyle{ubuntutermStyle}{
-    language=bash,
-    basicstyle=\ttfamily\small,
-    keywordstyle=\color{blue},
-    commentstyle=\color{gray},
-    stringstyle=\color{green!70!black},
-    backgroundcolor=\color{codebackground},
-    frame=single,
-    framesep=2pt,
-    framerule=0pt,
-    rulecolor=\color{codebackground},
-    showstringspaces=false
-}
-
-\lstdefinestyle{xmlStyle}{
-    language=XML,
-    basicstyle=\ttfamily\small,
-    keywordstyle=\color{blue},
-    identifierstyle=\color{black},
-    commentstyle=\color{green},
-    stringstyle=\color{red},
-    showstringspaces=false,
-    morekeywords={xmlns,version,type}
-}
-\definecolor{codebackground}{RGB}{240,240,240}
-
-\pagestyle{fancy}
 \title{Report}
 \author{Nabil ECH-CHOKHMANY}
-%\date{}
+\date{}
 
 \begin{document}
 
 \maketitle
 
+
+
+
 \tableofcontents
 \listoffigures
 \lstlistoflistings
+
+
+
 \include{Abstract}
 \include{Introduction}
 \include{Background}
@@ -88,6 +27,9 @@
 \include{Configuring Networks with NETCONF}
 \include{Conclusion}
 
-\bibliographystyle{abbrv}
-%\bibliography{references}  % need to put bibtex references in references.bib 
+
+
+
+
+
 \end{document}
