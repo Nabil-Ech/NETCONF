@@ -1,0 +1,36 @@
+\documentclass[a4paper, 11pt]{report}
+\usepackage[top=3cm, bottom=3cm, left = 2cm, right = 2cm]{geometry} 
+\geometry{a4paper} 
+\usepackage{settings}
+\pagestyle{fancy}
+
+
+
+
+
+
+
+\begin{document}
+
+\input{title_page.tex}
+
+
+\tableofcontents
+
+\listoffigures
+\lstlistoflistings
+
+\printglossary[type=\acronymtype]
+
+\include{Abstract}
+\include{Introduction}
+\include{Background}
+\include{Overview}
+\include{Implementation}
+\include{Configuring Networks with NETCONF}
+\include{Conclusion}
+
+\bibliographystyle{abbrv}
+\bibliography{references} % need to put bibtex references in references.bib 
+\include{Annexes}
+\end{document}

@@ -1,0 +1,39 @@
+\begin{thebibliography}{1}
+
+\bibitem{techtarget}
+{W}hat is {N}etwork {C}onfiguration {P}rotocol ({N}{E}{T}{C}{O}{N}{F})? |
+  {D}efinition from {T}ech{T}arget --- techtarget.com.
+\newblock \url{https://www.techtarget.com/searchnetworking/definition/NETCONF}.
+\newblock [Accessed 22-08-2023].
+
+\bibitem{NETCONFYANG}
+R.~Donato.
+\newblock {A}n {I}ntroduction to {N}{E}{T}{C}{O}{N}{F}/{Y}{A}{N}{G} - {F}ir3net
+  --- fir3net.com.
+\newblock
+  \url{https://www.fir3net.com/Networking/Protocols/an-introduction-to-netconf-yang.html#Introduction}.
+\newblock [Accessed 22-08-2023].
+
+\bibitem{rfc4741}
+R.~Enns.
+\newblock {NETCONF Configuration Protocol}.
+\newblock RFC 4741, Dec. 2006.
+
+\bibitem{rfc6241}
+R.~Enns, M.~Björklund, A.~Bierman, and J.~Schönwälder.
+\newblock {Network Configuration Protocol (NETCONF)}.
+\newblock RFC 6241, June 2011.
+
+\bibitem{rfc5277}
+H.~Trevino and S.~Chisholm.
+\newblock {NETCONF Event Notifications}.
+\newblock RFC 5277, July 2008.
+
+\bibitem{netconf1}
+H.~Xu and D.~Xiao.
+\newblock Data modeling for netconf-based network management: Xml schema or
+  yang.
+\newblock In {\em 2008 11th IEEE International Conference on Communication
+  Technology}, pages 561--564, 2008.
+
+\end{thebibliography}

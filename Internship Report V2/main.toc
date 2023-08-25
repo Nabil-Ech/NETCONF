@@ -1,0 +1,57 @@
+\contentsline {chapter}{\numberline {1}Abstract}{5}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Introduction}{6}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Background}{7}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Overview of Netconf}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Network Configuration Protocol - NETCONF}{9}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Yet Another Next Generation - YANG}{11}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Extensible Markup Language - XML}{12}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Remote Procedure Call - RPC}{12}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Implementation}{14}{chapter.5}%
+\contentsline {section}{\numberline {5.1}GNS3}{14}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Appliances}{14}{subsection.5.1.1}%
+\contentsline {subsubsection}{Routers}{14}{section*.11}%
+\contentsline {subsubsection}{Switches}{15}{section*.13}%
+\contentsline {subsubsection}{Virtual PC (host)}{15}{section*.15}%
+\contentsline {subsubsection}{Cloud}{15}{section*.17}%
+\contentsline {subsubsection}{Network topology:}{16}{section*.19}%
+\contentsline {section}{\numberline {5.2}Configure DHCP}{16}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Dynamic Host Configuration Protocol (DHCP)}{16}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}DHCP configuration on Cisco router:}{17}{subsection.5.2.2}%
+\contentsline {subsubsection}{Step 1:}{17}{section*.21}%
+\contentsline {subsubsection}{Step 2:}{17}{section*.22}%
+\contentsline {subsubsection}{Step 3:}{18}{section*.23}%
+\contentsline {subsubsection}{Result:}{18}{section*.24}%
+\contentsline {section}{\numberline {5.3}Enabling NETCONG-YANG}{18}{section.5.3}%
+\contentsline {section}{\numberline {5.4}SSH connection establishment}{19}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Secure SHell (SSH)}{19}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Establishing an SSH connection between the router an host}{19}{subsection.5.4.2}%
+\contentsline {subsubsection}{On Cisco router}{19}{section*.26}%
+\contentsline {subsubsection}{Step 1:}{19}{section*.27}%
+\contentsline {subsubsection}{Step 2:}{19}{section*.28}%
+\contentsline {subsubsection}{Step 3:}{19}{section*.29}%
+\contentsline {subsubsection}{Step 4:}{19}{section*.30}%
+\contentsline {subsubsection}{On the local machine}{20}{section*.31}%
+\contentsline {subsection}{\numberline {5.4.3}Result}{20}{subsection.5.4.3}%
+\contentsline {chapter}{\numberline {6}Configuring Networks with NETCONF}{21}{chapter.6}%
+\contentsline {section}{\numberline {6.1}NETCONF base operations}{21}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Python code structure}{22}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Libraries}{22}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Session establishment}{22}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Filter}{23}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Configuration modification/retrieval and commit}{23}{subsection.6.2.4}%
+\contentsline {subsubsection}{Limitation of Using Running Configuration Directly in Cisco CSR1000v}{24}{section*.32}%
+\contentsline {section}{\numberline {6.3}Python automation}{25}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Scenario}{25}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Solving the Subnet Allocation Challenge}{25}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Example: Router IP Address Requirement Assessment and Subnet Allocation}{26}{subsection.6.3.3}%
+\contentsline {subsubsection}{Router Information:}{27}{section*.34}%
+\contentsline {subsubsection}{General Subnet:}{27}{section*.35}%
+\contentsline {subsubsection}{Router IP Address Requirement Assessment:}{27}{section*.36}%
+\contentsline {subsubsection}{Visualizing the IP Pool:}{27}{section*.37}%
+\contentsline {subsubsection}{Allocating Subnets based on Slice Proportions:}{27}{section*.38}%
+\contentsline {subsubsection}{Testing Subnet Allocation Code}{27}{section*.39}%
+\contentsline {subsubsection}{Input:}{28}{section*.40}%
+\contentsline {subsubsection}{Output:}{28}{section*.41}%
+\contentsline {chapter}{\numberline {7}Annex}{30}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Annex A: Project Code}{30}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Annex B: Router configuration}{32}{section.7.2}%

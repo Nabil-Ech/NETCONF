@@ -1,54 +1,54 @@
 \contentsline {chapter}{\numberline {1}Abstract}{4}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Introduction}{5}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Background}{7}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Overview of Netconf}{9}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Network Configuration Protocol (NETCONF)}{9}{section.4.1}%
-\contentsline {section}{\numberline {4.2}YANG}{11}{section.4.2}%
-\contentsline {section}{\numberline {4.3}XML}{12}{section.4.3}%
-\contentsline {section}{\numberline {4.4}RPC}{13}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Implementation}{15}{chapter.5}%
-\contentsline {section}{\numberline {5.1}GNS-3}{15}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Appliances}{15}{subsection.5.1.1}%
-\contentsline {subsubsection}{Routers:}{15}{section*.10}%
-\contentsline {subsubsection}{Switches:}{16}{section*.12}%
-\contentsline {subsubsection}{Virtual PC (host):}{16}{section*.14}%
-\contentsline {subsubsection}{Cloud:}{17}{section*.16}%
-\contentsline {subsubsection}{Network topology:}{17}{section*.18}%
-\contentsline {section}{\numberline {5.2}Configure DHCP}{18}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Dynamic Host Configuration Protocol (DHCP)}{18}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}DHCP configuration on Cisco router:}{18}{subsection.5.2.2}%
-\contentsline {subsubsection}{Step 1:}{18}{section*.20}%
-\contentsline {subsubsection}{Step 2:}{18}{section*.21}%
-\contentsline {subsubsection}{Step 3:}{19}{section*.22}%
-\contentsline {subsubsection}{Result :}{19}{section*.23}%
-\contentsline {section}{\numberline {5.3}Enabling NETCONG-YANG}{19}{section.5.3}%
-\contentsline {section}{\numberline {5.4}SSH connection establishment}{20}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Secure SHell (SSH)}{20}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Establishing an SSH connection between the router an host}{21}{subsection.5.4.2}%
-\contentsline {subsubsection}{On Cisco router}{21}{section*.25}%
-\contentsline {subsubsection}{Step 1:}{21}{section*.26}%
-\contentsline {subsubsection}{Step 2:}{21}{section*.27}%
-\contentsline {subsubsection}{Step 3:}{21}{section*.28}%
-\contentsline {subsubsection}{Step 4:}{21}{section*.29}%
-\contentsline {subsubsection}{On the local machine}{21}{section*.30}%
-\contentsline {subsection}{\numberline {5.4.3}Result}{22}{subsection.5.4.3}%
-\contentsline {chapter}{\numberline {6}Configuring Networks with NETCONF}{23}{chapter.6}%
-\contentsline {section}{\numberline {6.1}NETCONF base operations}{23}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Python code structure}{24}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Libraries}{24}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Session establishment}{24}{subsection.6.2.2}%
-\contentsline {subsection}{\numberline {6.2.3}Filter}{25}{subsection.6.2.3}%
-\contentsline {subsection}{\numberline {6.2.4}Configuration modification/retrieval and commit}{26}{subsection.6.2.4}%
-\contentsline {subsubsection}{Limitation of Using Running Configuration Directly in Cisco CSR1000v}{26}{section*.31}%
-\contentsline {section}{\numberline {6.3}Python automation}{27}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Scenario}{27}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Solving the Subnet Allocation Challenge}{28}{subsection.6.3.2}%
-\contentsline {subsubsection}{Router Information:}{29}{section*.33}%
-\contentsline {subsubsection}{General Subnet:}{29}{section*.34}%
-\contentsline {subsubsection}{Router IP Address Requirement Assessment:}{29}{section*.35}%
-\contentsline {subsubsection}{Visualizing the IP Pool:}{30}{section*.36}%
-\contentsline {subsubsection}{Allocating Subnets based on Slice Proportions:}{30}{section*.37}%
-\contentsline {subsubsection}{Testing Subnet Allocation Code}{30}{section*.38}%
-\contentsline {subsubsection}{Input:}{30}{section*.39}%
-\contentsline {subsubsection}{Output:}{30}{section*.40}%
-\contentsline {chapter}{\numberline {7}Conclusion}{32}{chapter.7}%
+\contentsline {chapter}{\numberline {3}Background}{6}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Overview of Netconf}{8}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Network Configuration Protocol (NETCONF)}{8}{section.4.1}%
+\contentsline {section}{\numberline {4.2}YANG}{10}{section.4.2}%
+\contentsline {section}{\numberline {4.3}XML}{11}{section.4.3}%
+\contentsline {section}{\numberline {4.4}RPC}{11}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Implementation}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}GNS-3}{13}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Appliances}{13}{subsection.5.1.1}%
+\contentsline {subsubsection}{Routers:}{13}{section*.10}%
+\contentsline {subsubsection}{Switches:}{14}{section*.12}%
+\contentsline {subsubsection}{Virtual PC (host):}{15}{section*.14}%
+\contentsline {subsubsection}{Cloud:}{15}{section*.16}%
+\contentsline {subsubsection}{Network topology:}{16}{section*.18}%
+\contentsline {section}{\numberline {5.2}Configure DHCP}{16}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Dynamic Host Configuration Protocol (DHCP)}{16}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}DHCP configuration on Cisco router:}{17}{subsection.5.2.2}%
+\contentsline {subsubsection}{Step 1:}{17}{section*.20}%
+\contentsline {subsubsection}{Step 2:}{17}{section*.21}%
+\contentsline {subsubsection}{Step 3:}{17}{section*.22}%
+\contentsline {subsubsection}{Result :}{17}{section*.23}%
+\contentsline {section}{\numberline {5.3}Enabling NETCONG-YANG}{18}{section.5.3}%
+\contentsline {section}{\numberline {5.4}SSH connection establishment}{18}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Secure SHell (SSH)}{18}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Establishing an SSH connection between the router an host}{18}{subsection.5.4.2}%
+\contentsline {subsubsection}{On Cisco router}{18}{section*.25}%
+\contentsline {subsubsection}{Step 1:}{18}{section*.26}%
+\contentsline {subsubsection}{Step 2:}{18}{section*.27}%
+\contentsline {subsubsection}{Step 3:}{18}{section*.28}%
+\contentsline {subsubsection}{Step 4:}{19}{section*.29}%
+\contentsline {subsubsection}{On the local machine}{19}{section*.30}%
+\contentsline {subsection}{\numberline {5.4.3}Result}{19}{subsection.5.4.3}%
+\contentsline {chapter}{\numberline {6}Configuring Networks with NETCONF}{20}{chapter.6}%
+\contentsline {section}{\numberline {6.1}NETCONF base operations}{20}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Python code structure}{21}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Libraries}{21}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Session establishment}{21}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Filter}{22}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Configuration modification/retrieval and commit}{22}{subsection.6.2.4}%
+\contentsline {subsubsection}{Limitation of Using Running Configuration Directly in Cisco CSR1000v}{23}{section*.31}%
+\contentsline {section}{\numberline {6.3}Python automation}{24}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Scenario}{24}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Solving the Subnet Allocation Challenge}{24}{subsection.6.3.2}%
+\contentsline {subsubsection}{Router Information:}{25}{section*.33}%
+\contentsline {subsubsection}{General Subnet:}{25}{section*.34}%
+\contentsline {subsubsection}{Router IP Address Requirement Assessment:}{26}{section*.35}%
+\contentsline {subsubsection}{Visualizing the IP Pool:}{26}{section*.36}%
+\contentsline {subsubsection}{Allocating Subnets based on Slice Proportions:}{26}{section*.37}%
+\contentsline {subsubsection}{Testing Subnet Allocation Code}{26}{section*.38}%
+\contentsline {subsubsection}{Input:}{26}{section*.39}%
+\contentsline {subsubsection}{Output:}{26}{section*.40}%
+\contentsline {chapter}{\numberline {7}Conclusion}{28}{chapter.7}%
