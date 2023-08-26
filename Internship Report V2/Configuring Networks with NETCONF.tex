@@ -59,7 +59,7 @@ The ncclient library is a popular Python implementation used for interacting wit
 
 In this section, we discuss the process of establishing a NETCONF session using the manager.connect() method as an example. This method is part of the ncclient library and allows us to establish a secure connection with the router.
 
-\begin{lstlisting}[style=pythonStyle, caption={Session establishment.}, backgroundcolor=\color{codebackground}]
+\begin{lstlisting}[style=pythonStyle, caption={Session establishment \cite{github}.}, backgroundcolor=\color{codebackground}]
                     with manager.connect(
                           host="192.168.1.1",
                           port=830,
@@ -83,7 +83,7 @@ The filter is a mechanism used to retrieve specific subsets of configuration or 
 
 For example, for the \texttt{<get-config>} operation in NETCONF with Python, we can use the \textit{filter} parameter to retrieve only the interface configurations from a network device. By specifying a filter criterion using XPath expressions that target the interface elements, such as \texttt{`/interfaces/interface'}, we can narrow down the retrieved data to only the relevant interface information.
 
-\begin{lstlisting}[style=pythonStyle, caption={Filter for interfaces.}, backgroundcolor=\color{codebackground}]
+\begin{lstlisting}[style=pythonStyle, caption={Filter for interfaces \cite{github}.}, backgroundcolor=\color{codebackground}]
   netconf_filter = """
       <filter>
         <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
@@ -97,7 +97,7 @@ For example, for the \texttt{<get-config>} operation in NETCONF with Python, we 
 This section showcases the process of connecting to the router, making modifications to the configuration, retrieving the configuration, and committing the changes.
 
 The following example focuses on modifying a router's configuration, specifically changing its interface configuration, and then committing the changes:
-\begin{lstlisting}[style=pythonStyle, caption={Changing the interface.}, backgroundcolor=\color{codebackground}]
+\begin{lstlisting}[style=pythonStyle, caption={Changing the interface \cite{github}.}, backgroundcolor=\color{codebackground}]
               with manager.connect(**device, hostkey_verify=False) as m:
                     # Lock the candidate datastore
                     m.lock('candidate')
@@ -130,8 +130,7 @@ The following example focuses on modifying a router's configuration, specificall
 When working with network devices, it is common to have the ability to directly modify the running configuration. However, it is important to note that not all devices support this feature. One such example is the Cisco CSR1000v router.
 
 The Cisco CSR1000v router does not allow direct modifications to the running configuration. This limitation is revealed by examining the capabilities of the router through the use of NETCONF. The capabilities provided by the router specify the supported operations and features. In the case of the Cisco CSR1000v, the capabilities indicate that editing the running configuration directly is not available.
-
-\begin{lstlisting}[style=pythonStyle, caption={Router CSR1000v capabilities.}, backgroundcolor=\color{codebackground}]
+\begin{lstlisting}[style=pythonStyle, caption={Router CSR1000v capabilities \cite{github}.}, backgroundcolor=\color{codebackground}]
               urn:ietf:params:netconf:base:1.0
               urn:ietf:params:netconf:base:1.1
               urn:ietf:params:netconf:capability:candidate:1.0

@@ -1,4 +1,41 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{DynamicHCP}
+Dynamic host configuration protocol (dhcp) | microsoft learn.
+\newblock
+  \url{https://learn.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-top}.
+\newblock (Accessed on 07/01/2023).
+
+\bibitem{DHCP}
+How to configure cisco router as dhcp server? – getlabsdone.
+\newblock \url{https://getlabsdone.com/configure-cisco-router-as-dhcp-server/}.
+\newblock (Accessed on 06/05/2023).
+
+\bibitem{huawei}
+Relationships between netconf, yang, and xml.
+\newblock
+  \url{https://forum.huawei.com/enterprise/en/relationships-between-netconf-yang-and-xml/thread/667282109519249408-667213883565289474}.
+\newblock (Accessed on 07/05/2023).
+
+\bibitem{RFC6241N71}
+Rfc 6241: Network configuration protocol (netconf).
+\newblock \url{https://www.rfc-editor.org/rfc/rfc6241#appendix-B}.
+\newblock (Accessed on 07/10/2023).
+
+\bibitem{RFC6241N8}
+Rfc 6241: Network configuration protocol (netconf).
+\newblock \url{https://www.rfc-editor.org/rfc/rfc6241}.
+\newblock (Accessed on 07/12/2023).
+
+\bibitem{SSH2}
+Ssh/openssh/configuring - community help wiki.
+\newblock \url{https://help.ubuntu.com/community/SSH/OpenSSH/Configuring}.
+\newblock (Accessed on 06/25/2023).
+
+\bibitem{GNS3}
+What is gns3? | what does it do? | sysnettech solutions.
+\newblock \url{https://www.sysnettechsolutions.com/en/what-is-gns3/}.
+\newblock (Accessed on 07/12/2023).
 
 \bibitem{techtarget}
 {W}hat is {N}etwork {C}onfiguration {P}rotocol ({N}{E}{T}{C}{O}{N}{F})? |
@@ -6,31 +43,52 @@
 \newblock \url{https://www.techtarget.com/searchnetworking/definition/NETCONF}.
 \newblock [Accessed 22-08-2023].
 
+\bibitem{techrpc}
+What is remote procedure call (rpc)? definition from searchapparchitecture.
+\newblock
+  \url{https://www.techtarget.com/searchapparchitecture/definition/Remote-Procedure-Call-RPC}.
+\newblock (Accessed on 05/25/2023).
+
+\bibitem{SSH}
+What is ssh (secure shell) and how does it work? definition from techtarget.
+\newblock
+  \url{https://www.techtarget.com/searchsecurity/definition/Secure-Shell}.
+\newblock (Accessed on 08/06/2023).
+
 \bibitem{NETCONFYANG}
-R.~Donato.
+Rick Donato.
 \newblock {A}n {I}ntroduction to {N}{E}{T}{C}{O}{N}{F}/{Y}{A}{N}{G} - {F}ir3net
   --- fir3net.com.
 \newblock
   \url{https://www.fir3net.com/Networking/Protocols/an-introduction-to-netconf-yang.html#Introduction}.
-\newblock [Accessed 22-08-2023].
+\newblock [Accessed 06-12-2023].
+
+\bibitem{github}
+Nabil ECH-CHOKHMANY.
+\newblock Nabil-ech/netconf: It's the subject of my internship in spain at the
+  university of cantabria. my goal is to use gns3 to deploy simple network
+  topologies and develop simple software to remotely change device operation
+  using netconf.
+\newblock \url{https://github.com/Nabil-Ech/NETCONF}.
+\newblock (Accessed on 08/26/2023).
 
 \bibitem{rfc4741}
-R.~Enns.
+Rob Enns.
 \newblock {NETCONF Configuration Protocol}.
-\newblock RFC 4741, Dec. 2006.
+\newblock RFC 4741, December 2006.
 
 \bibitem{rfc6241}
-R.~Enns, M.~Björklund, A.~Bierman, and J.~Schönwälder.
+Rob Enns, Martin Björklund, Andy Bierman, and Jürgen Schönwälder.
 \newblock {Network Configuration Protocol (NETCONF)}.
 \newblock RFC 6241, June 2011.
 
 \bibitem{rfc5277}
-H.~Trevino and S.~Chisholm.
+Hector Trevino and Sharon Chisholm.
 \newblock {NETCONF Event Notifications}.
 \newblock RFC 5277, July 2008.
 
 \bibitem{netconf1}
-H.~Xu and D.~Xiao.
+Hui Xu and Debao Xiao.
 \newblock Data modeling for netconf-based network management: Xml schema or
   yang.
 \newblock In {\em 2008 11th IEEE International Conference on Communication

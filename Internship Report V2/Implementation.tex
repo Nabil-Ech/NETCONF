@@ -2,7 +2,7 @@
 
 \section{GNS3}
 
-GNS3 (Graphical Network Simulator-3) software allows us to emulate complex network designs comprising real devices such as Cisco Router/Switch. In this sense, the emulation framework provides virtualization solutions over which actual images of the operating system of such devices can run.
+GNS3 (Graphical Network Simulator-3) software allows us to emulate complex network designs comprising real devices such as Cisco Router/Switch. In this sense, the emulation framework provides virtualization solutions over which actual images of the operating system of such devices can run \cite{GNS3}.
 
 This way, it enables to run real Cisco IOS images using Dynamips in the GNS3 infrastructure, and with this software, we can create realistic network designs on our computer and study in more detail for certifications such as \gls{CCNA} and  \gls{CCNP}. In the context of this internship, we will exploit the GNS3 to deploy simple network topologies and develop a simple software, that implements a NETCONF client, to remotely modify the devices operation using NETCONF.
 
@@ -77,20 +77,20 @@ Therefore, the resulting network topology will be as follows:
     \centering
     \includegraphics[width=\linewidth]{Images/network.png}
     \caption{Network topology}
-    \label{fig:example}
+    \label{network topology}
 \end{figure}
 
 \section{Configure DHCP}
 
 \subsection{Dynamic Host Configuration Protocol (DHCP)}
-Dynamic Host Configuration Protocol (DHCP) is a client/server protocol that automatically provides an \gls{IP} host with its IP address and other related configuration information such as the subnet mask and default gateway. RFCs 2131 and 2132 define DHCP as an Internet Engineering Task Force (IETF) standard based on Bootstrap Protocol (BOOTP), a protocol with which DHCP shares many implementation details. DHCP allows hosts to obtain required TCP/IP configuration information from a DHCP server (router in our case).
+Dynamic Host Configuration Protocol (DHCP) is a client/server protocol that automatically provides an \gls{IP} host with its IP address and other related configuration information such as the subnet mask and default gateway. RFCs 2131 and 2132 define DHCP as an Internet Engineering Task Force (IETF) standard based on Bootstrap Protocol (BOOTP), a protocol with which DHCP shares many implementation details. DHCP allows hosts to obtain required TCP/IP configuration information from a DHCP server (router in our case) \cite{DynamicHCP}.
 
 Every device on a TCP/IP-based network must have a unique unicast IP address to access the network and its resources. Without DHCP, IP addresses for new computers or computers that are moved from one subnet to another must be configured manually; IP addresses for computers that are removed from the network must be manually reclaimed.
 
 With DHCP, this entire process is automated and managed centrally. The DHCP server maintains a pool of IP addresses and leases an address to any DHCP-enabled client when it starts up on the network. Because the IP addresses are dynamic (leased) rather than static (permanently assigned), addresses no longer in use are automatically returned to the pool for reallocation.
 
 \subsection{DHCP configuration on Cisco router:}
-In the following we describe the DHCP configuration in an interface of the Cisco router used in this work. 
+In the following we describe the DHCP configuration in an interface of the Cisco router used in this work \cite{DHCP}. 
 
 \subsubsection{Step 1:}
 Defining the pool. The name of the pool we will give is DHCP-POOL for the subnet 10.10.10.0/24
@@ -142,16 +142,16 @@ In the case of Cisco CSR 1000v, we will need to enable candidate-datastore featu
 
 \section{SSH connection establishment}
 \subsection{Secure SHell (SSH)}
-SSH, also known as Secure Shell or Secure Socket Shell, is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network.
+SSH, also known as Secure Shell or Secure Socket Shell, is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network \cite{SSH}.
 
 SSH also refers to the suite of utilities that implement the SSH protocol. Secure Shell provides strong password authentication and public key authentication, as well as encrypted data communications between two computers connecting over an open network, such as the Internet.
 
 In addition to providing strong encryption, SSH is widely used by network administrators to manage systems and applications remotely, enabling them to log in to another computer over a network, execute commands and move files from one computer to another.
 
-In our scenario, we will establish an SSH connection between the local PC, acting as an administrator, and the three routers depicted in Figure \ref{}.
+In our scenario, we will establish an SSH connection between the local PC, acting as an administrator, and the three routers depicted in Figure \ref{network topology}.
 
 \subsection{Establishing an SSH connection between the router an host}
-In this section we describe the process to enable SSH communication between an application running on the host and the Cisco router within GNS3.
+In this section we describe the process to enable SSH communication between an application running on the host and the Cisco router within GNS3 \cite{SSH2}.
 
 \subsubsection{On Cisco router}
 

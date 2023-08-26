@@ -77,7 +77,7 @@ A YANG model is made up from various components, as depicted in Figure~\ref{fig:
 \section{Extensible Markup Language - XML}
 Extensible Markup Language (XML) lets us define and store data in a shareable manner. XML supports information exchange between computer systems such as websites, databases, and third-party applications. Predefined rules make it easy to transmit data as XML files over any network because the recipient can use those rules to read the data accurately and efficiently.
 
-In the context of NETCONF, XML is used as the format for exchanging configuration information between the client and the server). NETCONF defines a set of standardized XML-based messages that are used to manage the configuration and operational state of network devices.
+In the context of NETCONF, XML is used as the format for exchanging configuration information between the client and the server). NETCONF defines a set of standardized XML-based messages that are used to manage the configuration and operational state of network devices \cite{huawei}.
 
 When a client sends a request to a network device using NETCONF, it typically includes an XML document that specifies the desired configuration changes or queries. The network device processes the XML request, performs the necessary operations, and sends a response back to the client in XML format.
 
@@ -85,16 +85,16 @@ The use of XML in NETCONF provides several benefits. First, XML is a widely adop
 
 
 \section{Remote Procedure Call - RPC}
-Remote Procedure Call is a communication protocol that one program can use to request a service from a program located in another computer on a network without having to understand the underlying characteristics. RPC is used to call other processes on the remote systems like a local system. A procedure call is also sometimes known as a function call or a subroutine call.
+Remote Procedure Call is a communication protocol that one program can use to request a service from a program located in another computer on a network without having to understand the underlying characteristics. RPC is used to call other processes on the remote systems like a local system. A procedure call is also sometimes known as a function call or a subroutine call \cite{techrpc}.
 
-\subsection*{RPC Model}
+\subsection{RPC Model}
 
-The NETCONF protocol uses an RPC-based communication model. NETCONF peers use \texttt{<rpc>} and \texttt{<rpc-reply>} XML elements to provide transport-protocol-independent framing of NETCONF requests and responses.
+The NETCONF protocol uses an RPC-based communication model. NETCONF peers use \texttt{<rpc>} and \texttt{<rpc-reply>} XML elements to provide transport-protocol-independent framing of NETCONF requests and responses \cite{RFC6241N71}.
 
-\subsection*{\texttt{<rpc>} Element}
+\subsection{\texttt{<rpc>} Element}
 The \textless{rpc}\textgreater{} element is used to enclose a NETCONF request sent from theclient to the server.
 
-The \texttt{<rpc>} element has a mandatory attribute ``message-id'' which is a string chosen by the sender of the RPC that will commonly encode a monotonically increasing integer. The receiver of the RPC does not decode or interpret this string but simply saves it to be used as a ``message-id'' attribute in any resulting \texttt{<rpc-reply>} message. 
+The \texttt{<rpc>} element has a mandatory attribute ``message-id'' which is a string chosen by the sender of the RPC that will commonly encode a monotonically increasing integer. The receiver of the RPC does not decode or interpret this string but simply saves it to be used as a ``message-id'' attribute in any resulting \texttt{<rpc-reply>} message \cite{RFC6241N8}. 
 
 \begin{lstlisting}[style=xmlStyle, caption={\texttt{<rpc>} Model.}, backgroundcolor=\color{codebackground}]
                 <rpc message-id="101"
@@ -119,14 +119,14 @@ The following example invokes the NETCONF \texttt{<get>} method with no paramete
 
 
 
-\subsection*{\texttt{<rpc-reply>} Element}
+\subsection{\texttt{<rpc-reply>} Element}
 
 
 The \texttt{<rpc-reply>} message is sent in response to an \texttt{<rpc>} message.
 
 The \texttt{<rpc-reply>} element has a mandatory attribute ``message-id'', which is equal to the ``message-id'' attribute of the \texttt{<rpc>} for which this is a response.
 
-A NETCONF server MUST also return any additional attributes included in the \texttt{rpc} element unmodified in the \texttt{<rpc-reply>} element.
+A NETCONF server MUST also return any additional attributes included in the \texttt{rpc} element unmodified in the \texttt{<rpc-reply>} element \cite{RFC6241N8}.
 
 The response data is encoded as one or more child elements to the \texttt{rpc-reply} element.
 
