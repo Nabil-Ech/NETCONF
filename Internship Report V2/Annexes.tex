@@ -24,17 +24,22 @@ def generate_subnets(network, num_routers):
     default_router = []
     power = 0
     index = -1
-    left_add=pow(2, 32-ipaddress.IPv4Network("192.168.0.0/" + str(network.netmask)).prefixlen)
+    left_add=pow(2, 32-ipaddress.IPv4Network("192.168.0.0/" 
+    + str(network.netmask)).prefixlen)
     for num_ips in sorted_ips_list:
-        for x in range(32-ipaddress.IPv4Network("192.168.0.0/" + str(network.netmask)).prefixlen-1):
+        for x in range(32-ipaddress.IPv4Network("192.168.0.0/" 
+        + str(network.netmask)).prefixlen-1):
             if (pow(2, x)<= num_ips and num_ips < pow(2, x+1)):
                 power = x+1
         power_list.append(power)
     for i in range (num_routers):
         if left_add >= pow(2, power_list[i]):
             if i > 0 and power_list[i]==power_list[i-1] :
-                subnet_prefix = network.prefixlen + (32-ipaddress.IPv4Network("192.168.0.0/" + str(network.netmask)).prefixlen-power_list[i])
-                subnet = ipaddress.IPv4Network((network.network_address , subnet_prefix))
+                subnet_prefix = network.prefixlen + (32-ipaddress.
+                IPv4Network("192.168.0.0/" + str(network.netmask))
+                .prefixlen-power_list[i])
+                subnet = ipaddress.IPv4Network((network.network_address , 
+                subnet_prefix))
                 new_subnet = subnets[-1]+pow(2, power_list[i]) 
                 subnets.append(new_subnet)
                 mask.append(subnet.netmask)
@@ -49,8 +54,11 @@ def generate_subnets(network, num_routers):
                 print()
             
             else: 
-                subnet_prefix = network.prefixlen + (32-ipaddress.IPv4Network("192.168.0.0/" + str(network.netmask)).prefixlen-power_list[i])
-                subnet = ipaddress.IPv4Network((network.network_address , subnet_prefix))
+                subnet_prefix = network.prefixlen + (32-ipaddress.
+                IPv4Network("192.168.0.0/" + str(network.netmask))
+                .prefixlen-power_list[i])
+                subnet = ipaddress.IPv4Network((network.network_address , 
+                subnet_prefix))
                 new_subnet = subnet.network_address 
                 subnets.append(new_subnet)
                 mask.append(subnet.netmask)
@@ -68,7 +76,8 @@ def generate_subnets(network, num_routers):
 
 
 
-network_input = input("Enter the network and subnet in CIDR notation (e.g., 10.10.0.0/23): ")
+network_input = input("Enter the network and subnet 
+in CIDR notation (e.g., 10.10.0.0/23): ")
 num_routers = int(input("Enter the number of routers: "))
 network = ipaddress.IPv4Network(network_input)
 generate_subnets(network, num_routers)
@@ -152,12 +161,14 @@ int FastEthernet 1/0
 ip nat outside
 exit
 
-ip nat pool <pool-name = POOL> <starting-IP = 192.168.2.1> <ending-IP = 192.168.2.100> netmask 255.255.255.0 
+ip nat pool <pool-name = POOL> <starting-IP = 192.168.2.1> 
+<ending-IP = 192.168.2.100> netmask 255.255.255.0 
 
 access-list <acl-number = 1>
 permit <source-ip-network = 192.168.1.0> <wildcard-mask = 0.0.0.255>
 
-//NOTE:The access list configured above matches all hosts from the 192.168.1.0/24 subnet.*
+//NOTE:The access list configured above matches all hosts from the
+ 192.168.1.0/24 subnet.*
 
 ip nat inside source
 list <acl-number = 1> pool <pool-name = POOL>
@@ -180,10 +191,10 @@ configure terminal
 
 //Setting up the device to run SSH & configure SSH server
 
-
 hostname Router // configure hostname and domain name
 ip domain-name Router-domain
-crypto key generate rsa modulus 2048 // enter modulus length of at least 1024, longer is more secure
+crypto key generate rsa modulus 2048 // enter modulus length of at
+ least 1024, longer is more secure
 ip ssh version 2 // configure the device to run SSHv2
 
 line vty 0 4 // configure the virtual terminal line settings
@@ -193,13 +204,14 @@ end // return to EXEC mode
 show ip ssh // show version and conf info SSH server
 show ssh // show the status of SSH server connections
 configure terminal
-username admin password nabil // create user and password for SSH client to access
-username kimdoanh89 privilege 15 // set privilege privilege level 15 to the username "admin"
+username admin password nabil // create user and password for SSH 
+client to access
+username kimdoanh89 privilege 15 // set privilege privilege level 15 
+to the username "admin"
 
 exit
 show running-config // verify the entries
 copy running-config startup-config // save the entries in the conf fil
-
 // SSH to the router on the local machine (management server)
 ssh admin@192.168.1.1 -p 830 -s netconf
 password: nabil
