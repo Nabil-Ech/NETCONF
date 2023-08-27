@@ -7,25 +7,30 @@
 
 \begin{document}
 
-\input{Title_page.tex}
+        \input{Title_page.tex}
 
+        \tableofcontents
 
-\tableofcontents
+        \listoffigures
+        \lstlistoflistings
 
-\listoffigures
-\lstlistoflistings
+        \printglossary[type=\acronymtype]
 
-\printglossary[type=\acronymtype]
+        \include{Abstract}
+        \include{Introduction}
+        \include{Background}
+        \include{Overview}
+        \include{Implementation}
+        \include{Configuring Networks with NETCONF}
+        \include{Conclusion}
 
-\include{Abstract}
-\include{Introduction}
-\include{Background}
-\include{Overview}
-\include{Implementation}
-\include{Configuring Networks with NETCONF}
-\include{Conclusion}
+        \bibliographystyle{plain}
+        \bibliography{references}
+        \addcontentsline{toc}{chapter}{Bibliography}
+        
+        \appendix
 
-\bibliographystyle{plain}
-\bibliography{references} % need to put bibtex references in references.bib 
-\include{Annexes}
+        \input{Annexes.tex}
+        
+
 \end{document}

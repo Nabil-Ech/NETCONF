@@ -11,16 +11,17 @@ The NETCONF protocol was designed to make up for the shortcomings of the Simple 
 NETCONF uses the Remote Procedure Call (RPC) protocol to carry out communications between clients and servers. RPC is a client/server protocol that lets a program request a service from another one without understanding the details of the underlying network. RPC messages are encoded in Extensible Markup Language (XML) and transmitted via secure connection-oriented sessions.
 A NETCONF client, which is often part of a network manager, can be a script or application. A server is usually a network device, whose management IP address is known by the network manager. RFC 6241 uses the terms client and application, and the terms server and device interchangeably.
 
-The client (application) sends RFC messages that invoke operations on the server (device). The client can also subscribe to receive notifications from the server. The server executes the operations invoked by the client, and it can send notifications back to the client. A NETCONF server contains one or more configuration datastores for each device. A configuration datastore holds all the configuration data needed to take a device from its default state to a configured operational state. A NETCONF datastore is simply a place to store and access configuration information. For example, the datastore might be a database, a set of files, a location in flash memory or any combination of these. .
+The client (application) sends RFC messages that invoke operations on the server (device). The client can also subscribe to receive notifications from the server. The server executes the operations invoked by the client, and it can send notifications back to the client. A NETCONF server contains one or more configuration datastores for each device. A configuration datastore holds all the configuration data needed to take a device from its default state to a configured operational state. A NETCONF datastore is simply a place to store and access configuration information. For example, the datastore might be a database, a set of files, a location in flash memory or any combination of these.
+\pagebreak
 
-\begin{figure}[!ht]
+\begin{figure}[!]
     \centering
     \includegraphics[width=\linewidth]{Images/network_configuration_protocol-f_mobile.png}
     \caption{Diagram illustrating how NETCONF works.}
-    \label{fig:example}
+    \label{mio}
 \end{figure}
 
-The NETCONF protocol facilitates secure RPC communications between the client and server, providing a standards-based approach to network device management \cite{techtarget}. Figure~\ref{fig:example} provides an overall picture of the NETCONF operation, which can be conceptualized as having four layers as follows:
+The NETCONF protocol facilitates secure RPC communications between the client and server, providing a standards-based approach to network device management \cite{techtarget}. Figure~\ref{mio} provides an overall picture of the NETCONF operation, which can be conceptualized as having four layers as follows:
 
 \begin{itemize}
     \item Secure Transport Layer. The first layer provides the core communication path between the client and server. NETCONF is not bound to any transport protocol, but it can be executed over any transport protocol, including Transport Layer Security and Secure Shell. However, the protocol must provide the necessary functionality. The transport layer makes it possible for the client and server to communicate through a series of RPC messages.
@@ -58,14 +59,6 @@ The data models defined in YANG to be used by NETCONF are classified as either O
 
 A YANG model is made up from various components, as depicted in Figure~\ref{fig:yangModels}:
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.7\linewidth]{Images/yang.jpg}
-    \caption{Example of a YANG data model structure.}
-    \label{fig:yangModels}
-\end{figure}
-
-
 \begin{itemize}
     \item Container: A collection of information logically grouped. For instance there can be a containers defined for configuration, and for state.
     \item List: Within a container you can have a list or even multiple lists. An example would be a list of interfaces.
@@ -73,6 +66,18 @@ A YANG model is made up from various components, as depicted in Figure~\ref{fig:
     \item Leaf: Each element of a list has leafs, which contain the actual information.
     \item Data Type: For each leaf, the data type of the information is indicated.
 \end{itemize}
+
+\pagebreak
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Images/yang.jpg}
+    \caption{Example of a YANG data model structure \cite{NETCONFYANG}.}
+    \label{fig:yangModels}
+\end{figure}
+
+
+
 
 \section{Extensible Markup Language - XML}
 Extensible Markup Language (XML) lets us define and store data in a shareable manner. XML supports information exchange between computer systems such as websites, databases, and third-party applications. Predefined rules make it easy to transmit data as XML files over any network because the recipient can use those rules to read the data accurately and efficiently.

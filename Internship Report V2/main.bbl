@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{chat}
+chat.openai.com.
+\newblock \url{https://chat.openai.com/}.
+\newblock (Accessed on 08/26/2023).
+
 \bibitem{DynamicHCP}
 Dynamic host configuration protocol (dhcp) | microsoft learn.
 \newblock
