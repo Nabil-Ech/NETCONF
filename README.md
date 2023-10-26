@@ -24,7 +24,7 @@ This project was the subject of my Internship in Spain at the University of Cant
 - Developed a Python automation script to adjust, create, or delete DHCP server configurations based on the number of clients connected to each device.
 
 ## Deliverable
-- Please refer to my comprehensive [report](/NETCONF/Internship%20Report%20V2/main.pdf), which includes an overview of NETCONF-YANG, XML, RPC, and details all the steps for the implementation.
+- Please refer to my comprehensive [report](/Internship%20Report%20V2/main.pdf), which includes an overview of NETCONF-YANG, XML, RPC, and details all the steps for the implementation.
 
 ## Troubleshooting
 - For any issues I encountered and their respective solutions, please see the ISSUES section.
